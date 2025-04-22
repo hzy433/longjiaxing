@@ -1,0 +1,676 @@
+
+/* 全局重置样式 - 去除所有元素的默认边距和内边距 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* 页面基础样式 */
+
+
+
+html {
+    scroll-behavior:smooth;
+}
+
+
+
+/* 修复2：给动态元素添加加载占位 */
+[class*="active"] {
+    will-change: transform, opacity; /* 提示浏览器优化 */
+}
+
+/* 修复3：固定header造成的布局偏移 */
+body {
+    padding-top: 90px; /* 匹配header高度 */
+    min-height: calc(100vh - 90px); /* 补偿固定header */
+}
+
+/* 页面基础样式 */
+body {
+    background-color: #000000;
+    background: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+    text-align: center;
+    min-height: 100vh;
+    width: 100%;
+
+    padding: 0px 0px 0; /* 顶部留出header空间 */
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/debut_light.png");
+    background-attachment: fixed;
+    background-size: cover;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    
+    overflow-x: hidden; /* 阻止水平滚动 */
+
+
+   
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    height: clamp(60px,70px,95px);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    padding: 0 20px;
+    /* 阻止水平滚动 */
+    /* 阻止水平滚动 */
+    /* overflow-x: hidden; 
+    overflow-y: hidden;  */
+    
+}
+
+
+
+header a {
+    color:white;
+    text-decoration: none;
+}
+
+header a::before {
+    will-change: transform; /* 提示浏览器优化 */
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    height: 4px;
+    background-color: #040d86;
+    border-radius: 12px;
+    transform: scaleX(0);
+    transform-origin: right; /* 固定为 left */
+    transition: transform 0.2s ease-in-out;
+}
+
+header a:hover::before {
+    transform: scaleX(1);
+    width: 100%;
+    transform-origin: left;
+    transform: scaleX(50px);
+    transition: transform 0.3s ease-in-out; /* 确保动画一致 */
+}
+header a::before {
+    pointer-events: none; /* 防止动画被中断 */
+}
+
+
+
+
+  /* Logo样式 */
+  h1 {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    left: 30px;
+
+
+    background: url(images/Logo.png) no-repeat center;
+    background-size:contain;
+
+    width: 300px;
+    height:100%;
+    text-indent: -9999px;
+}/* 媒体查询：当屏幕宽度 <= 970px 时 */
+
+
+/* 禁用移动端动画 */
+@media (max-width: 768px) {
+    header a::before {
+        content: none; /* 移除伪元素 */
+    }
+    .header {
+        top: 150px;
+        height: 20px;
+        width: 10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+.menu {
+    display:none;
+}
+
+
+.nav{
+
+    padding: 0px,10px,0px;
+    display: flex;
+    gap: clamp(1px,5vw, 50px);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 7vh;
+    transition: height 0.3s ease; /* 添加过渡动画 */
+
+}
+/* 字体 */
+.nav-item {
+    color: #535353;
+
+    text-decoration: none;
+    transition: all 0.3s;
+    z-index: 991;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    position: relative;
+
+    text-align: center;
+    white-space: nowrap;
+    font-size: clamp(5px, 4.5vw, 25px);
+
+
+
+    display: inline-block;
+    vertical-align: middle;
+    background-color: transparent; /* 新增 */
+}
+
+
+
+@media (max-width: 970px) {
+    h1 {
+        background-size: 60%; /* 调整背景大小 */
+        left: 0; /* 使用 left 替代 margin */
+left: -70px;
+        margin: 0; /* 移除 margin */
+        width: 400px;
+
+    }
+
+    .nav {
+        opacity: 0;
+        position: absolute;
+        right: -80px; /* 根据 logo 宽度调整 */
+        top: 100px;
+        white-space: nowrap; /* 防止换行 */
+        -webkit-overflow-scrolling: touch; /* 平滑滚动 */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 20%;
+        height: auto;
+            transition: all 0.3s ease-out; /* 添加过渡效果 */
+        transform: scaleX(100%);
+        background-color: #f7f6f6;
+
+    }
+
+    .nav-item {
+
+        display: flex;
+margin-top: 5px;
+        align-items: center; /* 垂直居中 */
+        justify-content: center; /* 水平居中 */
+        padding: 5px 0; /* 添加垂直内边距 */
+        color: #535353;
+        text-decoration: none;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 700;
+        font-size: clamp(5px, 4.5vw, 25px);
+        background-color: transparent;
+    }
+
+
+
+    .language-switch {
+        margin-left: 0;
+        padding: 8px 12px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*       <!-- 添加语言切换按钮和搜索图标 --> */
+.header-actions {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right:1%;
+    width: 100px;
+    height: 30px;
+    background-color: transparent; /* 新增 */
+    margin-top: 4px;
+}
+/* 字体大小 */
+.language-switch {
+    border: none;
+    text-align: end;
+    cursor: pointer;
+    padding: clamp(10px, 1vw, 20px) clamp(5px, 1, 45px);
+    font-size: clamp(16px, 2vw, 25px);
+    color: #535353;
+    font-weight: 700;
+
+    background-color: transparent; /* 新增 */
+}
+
+.search-icon {
+    font-size: 24px; /* 设置图标大小 */
+    background: transparent; /* 修改 */
+    left: 0.5vw;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    bottom: 0px;
+}
+
+
+
+
+/* 基础动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+
+/* 来源：Uiverse.io 作者：JulanDeAlb */
+/* 汉堡菜单样式 */
+.hamburger {
+    opacity: 0;/* 全屏隐藏 */
+    cursor: pointer; /* 鼠标悬停时显示手型指针 */
+position: absolute;
+right: 20px;
+z-index: 0;
+
+    
+}
+
+
+.hamburger input {
+    display: none; /* 隐藏复选框 */
+}
+
+.hamburger svg {
+    /* SVG 的尺寸定义整体大小 */
+    height: 3em; /* 设置 SVG 的高度 */
+    /* 定义 SVG 的旋转动画 */
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1); /* 平滑过渡 */
+}
+
+.line {
+    fill: none; /* 无填充色 */
+    stroke: rgb(62, 62, 62); /* 线条颜色为白色 */
+    stroke-linecap: round; /* 线条末端为圆角 */
+    stroke-linejoin: round; /* 线条连接处为圆角 */
+    stroke-width: 3; /* 线条宽度为3px */
+    /* 定义线条的动画过渡效果 */
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+    stroke-dasharray: 12 63; /* 定义虚线的间隔 */
+}
+
+.hamburger input:checked + svg {
+    transform: rotate(-45deg); /* 选中时旋转 -45 度 */
+
+}
+
+
+.hamburger input:checked + svg .line-top-bottom {
+    stroke-dasharray: 20 300; /* 改变虚线间隔 */
+    stroke-dashoffset: -32.42; /* 偏移虚线的位置 */
+}
+
+
+
+  /* 响应式调整 */
+  @media (max-width: 950px) {
+    .hamburger{
+        z-index: 999;
+        opacity: 1;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.classification {
+    display: flex; /* 启用 Flex 布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    width: 100%;
+    padding-top: 80px;
+    background-color: rgb(231, 248, 242);
+    height: 66vh;
+}
+
+.back1 {
+    width: 80%;
+    height: auto;
+    background-color: white;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: relative; /* 移除 absolute */
+}
+
+
+
+
+
+
+
+.checkbox-container {
+
+    background-color: white;
+    border-radius:2px;
+    max-width: 150px;
+    height: 300px;
+    margin: auto;
+    justify-content: center;
+    /* 上下居中 */
+    align-content: center;
+}
+
+.checkbox-item {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    display: block;
+    line-height: 24px;
+    margin-bottom: 12px;
+}
+
+.checkbox-item input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* 当复选框被选中时改变样式 */
+.checkbox-item input:checked ~ .checkmark {
+    background-color: #2196F3;
+    border-color: #2196F3;
+    /* 添加缩放效果 */
+    transform: scale(1.05);
+}
+
+/* 创建对勾符号 */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* 显示对勾符号 */
+.checkbox-item input:checked ~ .checkmark:after {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 产品区域容器 */
+.product {
+    display: grid; /* 改为grid布局 */
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); /* 自动适配列数 */
+    gap: 40px; /* 网格间距 */
+    max-width: 100%;
+    height: auto;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    justify-items: center; /* 水平居中对齐 */
+    align-items: start; /* 垂直顶部对齐 */
+    padding: clamp(120px, 12vw, 160px) clamp(20px, 7vw, 80px); /* 响应式padding */
+    position: relative; /* 必须添加定位上下文 */
+}
+
+
+
+
+/* 单个产品卡片 */
+.product div {
+
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 100%; /* 让卡片宽度适应网格 */
+    max-width: 400px; /* 限制最大宽度 */
+
+}
+
+/* 悬停提升效果 */
+.product div:hover {
+    transform: translateY(-15px);
+}
+.product .card:hover {
+    transform: none; /* 禁用上移效果 */
+    cursor: default; /* 改为默认鼠标样式 */
+}
+
+/* 产品图片 */
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    aspect-ratio: 1/1; /* 保持正方形 */
+    object-fit: cover; /* 填充容器 */
+}
+
+/* 产品标题 */
+.product h3 {
+    font-size: clamp(24px, 2vw, 36px); /* 响应式字体 */
+top: auto;
+text-align: start;
+padding-left: 0.5rem;
+    color: #333;
+}
+
+/* 产品描述 */
+.product p {
+
+text-align: start;
+padding-top: 1rem;
+height: auto;
+padding-left: 0.5rem;
+    font-size: clamp(12px, 1.6vw, 16px);
+    font-weight: 500;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 20px;
+
+}
+
+
+.product .product-action {
+    display: inline-block;
+
+    cursor: pointer;
+    padding: clamp(10px, 0vw, 15px) clamp(20px, 10vw, 40px);
+    font-size: clamp(16px, 1.6vw, 20px);
+    margin: 0px 5px 20px; /* 上 左右 下 */
+    font-weight: bold;
+    line-height: 1.1;
+    color: #333;
+    background-color: #f5f5f5;
+    border-radius: 24px;
+    transition: all 0.3s ease;
+    border: 1px solid;
+border-color: #000;
+height: 40px;
+
+
+}
+
+/* 按钮悬停效果 */
+.product .product-action:hover {
+    background-color: #3a3a3a;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border: 1px solid;
+font-size: 21px;
+    color: white;
+}
+
+
+
+
+footer {
+    background-color: #727272;
+    color: #fff;
+
+    text-align: center;
+    border-top: 1px solid #5d5d5d;
+
+    display: flex;
+    justify-content:center;
+    align-items:flex-end;
+    width: 100%; /* 新增 */
+    height: 15vh;
+    box-sizing: border-box; /* 确保border计算在宽度内 */
+}
+
+
+
+.footer-content p {
+
+    margin: 5;
+    line-height: 1.5;
+    font-size: 14px;
+}
+.footer-content p1 {
+padding-bottom: 0px;
+font-weight: 700;
+margin: 50px;
+    font-size: 14px;
+}
+
+/* .footer-content a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+} */
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .parallel-group {
+        flex-direction: column;
+        gap: 1px;
+        
+    }
+    
+    .footer-content p1 {
+        margin: 0;
+        line-height: 2;
+        font-size: 10px;
+    }
+    
+}
+
+/* 其他样式保持原样 */

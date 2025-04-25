@@ -80,30 +80,219 @@ header a {
     text-decoration: none;
 }
 
-header a::before {
+/* 仅作用于主菜单的链接 */
+header a:not(.dropdown-menu a)::before {
     will-change: transform; /* 提示浏览器优化 */
     content: '';
     position: absolute;
     bottom: -2px;
     width: 100%;
     height: 4px;
-    background-color: #040d86;
+    background-color: #0414ff;
     border-radius: 12px;
     transform: scaleX(0);
     transform-origin: right; /* 固定为 left */
     transition: transform 0.2s ease-in-out;
 }
 
-header a:hover::before {
+/* 鼠标悬停时的动画效果 */
+header a:not(.dropdown-menu a):hover::before {
     transform: scaleX(1);
     width: 100%;
     transform-origin: left;
-    transform: scaleX(50px);
     transition: transform 0.3s ease-in-out; /* 确保动画一致 */
 }
-header a::before {
-    pointer-events: none; /* 防止动画被中断 */
+
+/* 防止动画被中断 */
+header a:not(.dropdown-menu a)::before {
+    pointer-events: none;
 }
+
+
+
+
+
+
+
+/* 子菜单链接的基础样式 */
+.dropdown-menu a {
+    position: relative; /* 为伪元素提供定位上下文 */
+    display: block; /* 子菜单竖直排列 */
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px 20px;
+    transition: color 0.3s ease, background-color 0.3s ease; /* 添加颜色和背景过渡 */
+}
+
+/* 子菜单链接的下划线动画 */
+.dropdown-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* 位于文字底部 */
+    left: 0;
+    width: 0; /* 初始宽度为 0 */
+    height: 2px; /* 下划线高度 */
+    background-color: #0414ff; /* 下划线颜色 */
+    transition: width 0.3s ease; /* 添加宽度过渡动画 */
+}
+
+/* 鼠标悬停时触发下划线动画 */
+.dropdown-menu a:hover::after {
+    width: 100%; /* 下划线扩展到整个文字宽度 */
+}
+
+/* 鼠标悬停时改变文字颜色和背景 */
+.dropdown-menu a:hover {
+    color: #0414ff; /* 改变文字颜色 */
+    background-color: #f0f0f0; /* 改变背景颜色 */
+}
+
+/* 子菜单容器样式 */
+.dropdown-menu {
+    display: none; /* 默认隐藏 */
+    position: absolute;
+    top: 140%; /* 根据需要调整位置 */
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 1000; /* 确保子菜单在最上层 */
+    text-align: left;
+}
+
+/* 鼠标悬停时显示子菜单 */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+
+/* 缓冲区域样式 */
+.dropdown-buffer {
+    position: absolute;
+    top: 100%; /* 紧贴父菜单底部 */
+    left: 0;
+    width: 100%;
+    height: 20px; /* 缓冲区域高度 */
+    background: transparent; /* 透明背景 */
+    pointer-events: auto; /* 确保缓冲区域可以接收鼠标事件 */
+}
+
+
+
+/* 主导航样式 */
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1px, 5vw, 50px);
+    width: 100%;
+    height: 7vh;
+    position: relative;
+    padding: 0 10px;
+}
+
+/* 主导航链接样式 */
+.nav-item {
+    position: relative;
+    color: #535353;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(5px, 4.5vw, 25px);
+    text-align: center;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+/* 主导航链接的颜色 */
+.nav-link {
+    color: #4b4a4a;
+}
+
+
+
+
+
+/* 侧边导航栏 */
+@media (max-width: 970px) {
+    h1 {
+        background-size: 60%; /* 调整背景大小 */
+        left: 0; /* 使用 left 替代 margin */
+left: -70px;
+        margin: 0; /* 移除 margin */
+        width: 400px;
+
+    }
+
+    .nav {
+        opacity: 0;
+        position: absolute;
+        right: -80px; /* 根据 logo 宽度调整 */
+        top: 100px;
+        white-space: nowrap; /* 防止换行 */
+        -webkit-overflow-scrolling: touch; /* 平滑滚动 */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 20%;
+        height: auto;
+            transition: all 0.3s ease-out; /* 添加过渡效果 */
+        transform: scaleX(100%);
+        background-color: #ffffff;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* 柔和阴影 */
+        border-radius: 6px;
+
+    }
+
+    .nav-item {
+
+        display: flex;
+margin-top: 5px;
+        align-items: center; /* 垂直居中 */
+        justify-content: center; /* 水平居中 */
+        padding: 5px 0; /* 添加垂直内边距 */
+        color: #535353;
+        text-decoration: none;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 700;
+        font-size: clamp(5px, 4.5vw, 25px);
+        background-color: transparent;
+    }
+
+
+
+    .language-switch {
+        margin-left: 0;
+        padding: 8px 12px;
+    }
+
+
+    /* 子菜单容器样式 */
+.dropdown-menu {
+    display: none; /* 默认隐藏 */
+    position: absolute;
+    top: 140%; /* 根据需要调整位置 */
+    left: -30px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 1000; /* 确保子菜单在最上层 */
+    text-align: left;
+}
+}
+
+
+
+
+
+
+
 
 
 
@@ -144,97 +333,6 @@ header a::before {
 
 
 
-.menu {
-    display:none;
-}
-
-
-.nav{
-
-    padding: 0px,10px,0px;
-    display: flex;
-    gap: clamp(1px,5vw, 50px);
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 7vh;
-    transition: height 0.3s ease; /* 添加过渡动画 */
-
-}
-/* 字体 */
-.nav-item {
-    color: #535353;
-
-    text-decoration: none;
-    transition: all 0.3s;
-    z-index: 991;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    position: relative;
-
-    text-align: center;
-    white-space: nowrap;
-    font-size: clamp(5px, 4.5vw, 25px);
-
-
-
-    display: inline-block;
-    vertical-align: middle;
-    background-color: transparent; /* 新增 */
-}
-
-
-
-@media (max-width: 970px) {
-    h1 {
-        background-size: 60%; /* 调整背景大小 */
-        left: 0; /* 使用 left 替代 margin */
-left: -70px;
-        margin: 0; /* 移除 margin */
-        width: 400px;
-
-    }
-
-    .nav {
-        opacity: 0;
-        position: absolute;
-        right: -80px; /* 根据 logo 宽度调整 */
-        top: 100px;
-        white-space: nowrap; /* 防止换行 */
-        -webkit-overflow-scrolling: touch; /* 平滑滚动 */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        width: 20%;
-        height: auto;
-            transition: all 0.3s ease-out; /* 添加过渡效果 */
-        transform: scaleX(100%);
-        background-color: #f7f6f6;
-
-    }
-
-    .nav-item {
-
-        display: flex;
-margin-top: 5px;
-        align-items: center; /* 垂直居中 */
-        justify-content: center; /* 水平居中 */
-        padding: 5px 0; /* 添加垂直内边距 */
-        color: #535353;
-        text-decoration: none;
-        font-family: 'DM Sans', sans-serif;
-        font-weight: 700;
-        font-size: clamp(5px, 4.5vw, 25px);
-        background-color: transparent;
-    }
-
-
-
-    .language-switch {
-        margin-left: 0;
-        padding: 8px 12px;
-    }
-}
 
 
 
@@ -394,142 +492,72 @@ z-index: 0;
 
 
 
-.classification {
-    display: flex; /* 启用 Flex 布局 */
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
-    width: 100%;
-    padding-top: 80px;
-    background-color: rgb(231, 248, 242);
-    height: 66vh;
+
+
+.choice {
+    padding-top: 110px;
+    padding-left: clamp(20px,5vw,50px);
 }
 
-.back1 {
-    width: 80%;
-    height: auto;
-    background-color: white;
-    border-radius: 2px;
+.selector {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.options {
+margin-top: 20PX;
     display: flex;
-    justify-content: center;
-    align-content: center;
-    position: relative; /* 移除 absolute */
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+}
+
+.option input {
+    margin-right: 5px;
+    accent-color: #0742f5; /* 将打钩的颜色设置为红色 */
 }
 
 
 
 
-
-
-
-.checkbox-container {
-
-    background-color: white;
-    border-radius:2px;
-    max-width: 150px;
-    height: 300px;
-    margin: auto;
-    justify-content: center;
-    /* 上下居中 */
-    align-content: center;
-}
-
-.checkbox-item {
-    position: relative;
-    padding-left: 35px;
-    cursor: pointer;
-    display: block;
-    line-height: 24px;
-    margin-bottom: 12px;
-}
-
-.checkbox-item input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    background-color: #eee;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    transition: background-color 0.3s, border-color 0.3s;
-}
-
-/* 当复选框被选中时改变样式 */
-.checkbox-item input:checked ~ .checkmark {
-    background-color: #2196F3;
-    border-color: #2196F3;
-    /* 添加缩放效果 */
-    transform: scale(1.05);
-}
-
-/* 创建对勾符号 */
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-    left: 6px;
-    top: 2px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-}
-
-/* 显示对勾符号 */
-.checkbox-item input:checked ~ .checkmark:after {
-    display: block;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 产品区域容器 */
-.product {
-    display: grid; /* 改为grid布局 */
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); /* 自动适配列数 */
-    gap: 40px; /* 网格间距 */
+.product-all {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
     max-width: 100%;
     height: auto;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
-    justify-items: center; /* 水平居中对齐 */
-    align-items: start; /* 垂直顶部对齐 */
-    padding: clamp(120px, 12vw, 160px) clamp(20px, 7vw, 80px); /* 响应式padding */
-    position: relative; /* 必须添加定位上下文 */
+    min-height: 1000px;
+    justify-items: center;
+    align-items: start;
+    padding: 20px;
+}
+/* 添加媒体查询以在移动端调整为两列 */
+@media (max-width: 768px) {
+    .product-all {
+        grid-template-columns: repeat(2, 1fr); /* 两列布局 */
+        gap: 10px; /* 减小间距 */
+    }
 }
 
 
 
 
+
+
+
+.product-item {
+    display: block; /* 默认显示 */
+}
+
+.product-item.hidden {
+    display: none; /* 隐藏 */
+}
 /* 单个产品卡片 */
-.product div {
+.product-all div {
 
     text-align: center;
     background: white;
@@ -538,20 +566,26 @@ z-index: 0;
     transition: transform 0.3s ease;
     width: 100%; /* 让卡片宽度适应网格 */
     max-width: 400px; /* 限制最大宽度 */
+    height: auto;
 
 }
 
 /* 悬停提升效果 */
-.product div:hover {
+.product-all div:hover {
     transform: translateY(-15px);
+
+
+        border-color: #ff0000;
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);  /* 添加发光效果 */
+
 }
-.product .card:hover {
+.product-all .card:hover {
     transform: none; /* 禁用上移效果 */
     cursor: default; /* 改为默认鼠标样式 */
 }
 
 /* 产品图片 */
-.product img {
+.product-all img {
     width: 100%;
     height: auto;
     border-radius: 10px;
@@ -560,20 +594,22 @@ z-index: 0;
 }
 
 /* 产品标题 */
-.product h3 {
-    font-size: clamp(24px, 2vw, 36px); /* 响应式字体 */
+.product-all h3 {
+    font-size: clamp(24px, 2vw, 24px); /* 响应式字体 */
 top: auto;
 text-align: start;
+height: 60px;
+line-height: 1.2; /* 添加行间距 */
 padding-left: 0.5rem;
     color: #333;
 }
 
 /* 产品描述 */
-.product p {
+.product-all p {
 
 text-align: start;
 padding-top: 1rem;
-height: auto;
+height: clamp(70px, 1.6vw, 110px);
 padding-left: 0.5rem;
     font-size: clamp(12px, 1.6vw, 16px);
     font-weight: 500;
@@ -584,12 +620,12 @@ padding-left: 0.5rem;
 }
 
 
-.product .product-action {
+.product-all .product-action {
     display: inline-block;
 
     cursor: pointer;
     padding: clamp(10px, 0vw, 15px) clamp(20px, 10vw, 40px);
-    font-size: clamp(16px, 1.6vw, 20px);
+    font-size: clamp(14px, 1.6vw, 20px);
     margin: 0px 5px 20px; /* 上 左右 下 */
     font-weight: bold;
     line-height: 1.1;
@@ -605,14 +641,40 @@ height: 40px;
 }
 
 /* 按钮悬停效果 */
-.product .product-action:hover {
+.product-all .product-action:hover {
     background-color: #3a3a3a;
     transform: translateY(-2px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     border: 1px solid;
-font-size: 21px;
+
     color: white;
 }
+
+
+
+
+
+/* 去除默认蓝色样式 */
+.product-action a {
+    color: inherit; /* 继承父元素的颜色 */
+    text-decoration: none; /* 去掉下划线 */
+    font-weight: bold; /* 可选：设置字体加粗 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

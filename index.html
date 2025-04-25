@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <title>龙嘉兴电子科技官网</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/longjiaxing/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 
@@ -20,7 +20,7 @@
 
 
         
-        <button class="menu">&#9776;</button>
+
         <h1>龙嘉兴电子科技</h1>
 
         <label class="hamburger">
@@ -33,21 +33,66 @@
           
         <nav class="nav">
 
-            <a href="#home" class="nav-item is-active" active-color="orange">首页</a>
-            <a href="#about-section" class="nav-item" active-color="green">关于</a>
-            <a href="#product" class="nav-item" active-color="blue">产品</a>
-            <a href="#newsletter" class="nav-item" active-color="red">服务</a>
-            <a href="#newsletter" class="nav-item" active-color="rebeccapurple">支持</a>
+            <a href="index.html#home" class="nav-item is-active" active-color="orange">首页</a>
+            
+            
+            <div class="nav-item dropdown" active-color="green">
+                <a href="#about-section" class="nav-link">关于</a>
+                <div class="dropdown-buffer"></div> <!-- 缓冲区域 -->
+                <div class="dropdown-menu">
+                    <a href="#about1">公司简介</a>
+                    <a href="#about2">发展历程</a>
+                    <a href="#about3">企业文化</a>
+                </div>
+            </div>
+
+
+            <div class="nav-item dropdown" active-color="blue">
+                <a href="#product" class="nav-link">产品</a>
+                <div class="dropdown-buffer"></div> <!-- 缓冲区域 -->
+                <div class="dropdown-menu">
+                    <a href="product.html">产品中心</a>
+                    <a href="product center.html">成品中心</a>
+                    <a href="#product3">产品手册2</a>
+                </div>
+            </div>
+
+
+            <div class="nav-item dropdown" active-color="red">
+                <a href="#newsletter" class="nav-link">服务</a>
+                <div class="dropdown-buffer"></div> <!-- 缓冲区域 -->
+                <div class="dropdown-menu">
+                    <a href="index.html##newsletter">客户支持</a>
+                    <a href="index.html#newsletter">售后服务</a>
+                    <a href="index.html#newsletter">技术支持</a>
+                </div>
+            </div>
+
+
+
+
+            <div class="nav-item dropdown" active-color="rebeccapurple">
+                <a href="#newsletter" class="nav-link">支持</a>
+                <div class="dropdown-buffer"></div> <!-- 缓冲区域 -->
+                <div class="dropdown-menu">
+                    <a href="#support1">常见问题</a>
+                    <a href="#support2">文档下载</a>
+                    <a href="#support3">联系我们</a>
+                </div>
+            </div>
+
+
+
             <span class="nav-indicator"></span>
         </nav>
     
         <!-- 添加语言切换按钮和搜索图标 -->
-        <div class="header-actions">
-            <!-- <button class="language-switch">中文</button> -->
+        <!-- <div class="header-actions">
+            <button class="language-switch">中文</button>
             <button class="search-icon">
                 <i class="fas fa-search"></i>
             </button>
-        </div>
+        </div> -->
 
          
            
@@ -56,7 +101,7 @@
     
 
 
-    <main>
+<main>
 
     <section class="home"  id="home">
 
@@ -191,7 +236,7 @@
     
     <section class="shop" id="shop">
 
-            <img src="images/banner1 (2).png" alt="龙嘉兴电子科技">
+            <img src="images/shop.png" alt="龙嘉兴电子科技">
             <div class="info">
             <h2>我们可以为你解决产品 方案 库存...</h2>
             <p>24h一对一服务,让你获得极致服务,<br>
@@ -211,31 +256,40 @@
     </h>
         
         <div >
-            <img  class="img"  src="images/ym/叠层高分子固态铝电解电容2.png" alt="叠层高分子固态铝电解电容2">
-            <h3 class="flash">叠层高分子固态铝电解电容</h3>
-            <p class="flash">小体积、大容量、高容量密度、低ESR、低漏电
-                <br>超薄型 低ESR/高纹波电流
-                <br>高压/低ESR 超大容量1000μF/超低ESR 3mΩ</p>
-            <p class="product-action">了解更多</p>
+            <img  class="img"  src="images/CP/F2302A0 100WFLOODLIGHT.png" alt="F2302A0 100WFLOODLIGHT">
+            <h3 class="flash">F2302A0<br> 100WFLOODLIGHT</h3>
+            <p class="flash">Power(W):  100W
+                <br>Luminous flux (lumens):   5000K:10000(Diffuser:8000)<br>4000K:10000(Diffuser:8000)
+                <br>Chromatic temperature(K):   5000/4000(Switch)
+                <br>Voltage(V):   100-240V/AC
+            </p>
+                <p class="product-action">
+                    <a href="files/XXXX.pdf" download=>了解更多</a>
+                </p>
             <p class="product-action">立即购买</p>
+
         </div>
         
         <div >
-            <img  class="img"  src="images/ym/液态大型铝电解电容器.png" alt="液态大型铝电解电容器">
-            <h3 class="flash">液态大型铝电解电容器</h3>
-            <p class="flash">大容量、小尺寸 针对AI服务器电源功率密度不足的问题
-                <br>IDC3系列大容量的特性确保稳定的直流输出
-                <br>提升电源效率，支持AI服务器电源进一步提升功率密度</p>
+            <img  class="img"  src="images/CP/FL02-A00 80WFLOODLIGHT.png" alt="FL02-A00 80WFLOODLIGHT">
+            <h3 class="flash">FL02-A00<br> 80WFLOODLIGHT</h3>
+            <p class="flash">Power(W):  80W
+                <br>Luminous flux (lumens):   6000K:8000(Diffuser:6400)<br>4000K:8000(Diffuser:6400)
+                <br>Chromatic temperature(K):   6000/4000(Switch)
+                <br>Voltage(V):   24-48V/DC
+            </p>
+
             <p class="product-action">了解更多</p>
             <p class="product-action">立即购买</p>
         </div>
 
         <div >
-            <img  class="img"  src="images/ym/液态贴片(SMD)铝电解电容器.png" alt="液态贴片(SMD)铝电解电容器">
-            <h3 class="flash">液态贴片(SMD)铝电解电容器</h3>
-            <p  class="flash">液态SMD贴片产品 (全自动生产) 
-                <br>替代日系等进口产品，小体积、大容量、高稳定    
-                <br>耐高温/长寿命/低阻抗大纹波电流/高
+            <img  class="img"  src="images/CP/F2101A1 PEN LIGHT.png" alt="F2101A1 PEN LIGHT">
+            <h3 class="flash">F2101A1<br> PEN LIGHT</h3>
+            <p  class="flash">Luminous flux (lumens)   50/20-200 
+                <br>Run time (hrs)   50/20-200lumes: 5/20-2       
+                <br>Chromatic temperature (K)   6000
+                <br>Battery   3.7V/600mAh Li-ion
 
             </p>
 
@@ -246,11 +300,14 @@
 
 
         <div >
-            <img  class="img"  src="images/ym/液态引线(大直径)铝电解电容器.png" alt="液态引线(大直径)铝电解电容器">
-            <h3 class="flash">液态引线(大直径)铝电解电容器</h3>
-            <p  class="flash">耐高温、耐大纹波、长寿命、具体较好的特性一致性
-                <br>成本低于同规格日系20%~30%
-                <br>在特性方面完全可以替代日系产品</p>
+            <img  class="img"  src="images/CP/F2204A0RECHARGEABE FLASHLIGHT.png" alt="F2204A0RECHARGEABE FLASHLIGHT">
+            <h3 class="flash">F2204A0<br>RECHARGEABE FLASHLIGHT</h3>
+            <p  class="flash">Luminous flux (lumens)   1100/500/50
+                <br>Run time (hrs)   1100lumes:2.5  500lumes:  550lumes:30
+                
+                <br>Chromatic temperature (K)   5000-7000
+                <br>Battery   3.7V/4500mAh Li-ion
+            </p>
             <p class="product-action">了解更多</p>
             <p class="product-action">立即购买</p>
         </div>
@@ -267,29 +324,29 @@
             <span class="cn">配件产品</span>
         </h>
         <div2 >
-            <img class="flash" src="images/p1.png"  alt="大疆无人机">
-            <h3 class="flash">无惹急</h3>
+            <img class="flash" src="images/p1.png"  alt="无人机">
+            <h3 class="flash">大疆无人机</h3>
 
             <p class="product2-action">XBA镜头重心配件</p>
         </div2>
 
         <div2>
-            <img class="flash" src="images/p1.png" alt="大疆无人机">
-            <h3 class="flash">无惹急</h3>
+            <img class="flash" src="images/p1.png" alt="无人机">
+            <h3 class="flash">大疆无人机</h3>
 
             <p class="product2-action">XBA镜头重心配件</p>
         </div2>  
 
         <div2>
-            <img class="flash" src="images/p1.png" alt="大疆无人机">
-            <h3 class="flash">无惹急</h3>
+            <img class="flash" src="images/p1.png" alt="无人机">
+            <h3 class="flash">大疆无人机</h3>
 
             <p class="product2-action">XBA镜头重心配件</p>
         </div2>
 
         <div2>
-            <img class="flash" src="images/p1.png" alt="大疆无人机">
-            <h3 class="flash">无惹急</h3>
+            <img class="flash" src="images/p1.png" alt="无人机">
+            <h3 class="flash">大疆无人机</h3>
 
             <p class="product2-action">XBA镜头重心配件</p>
         </div2>
@@ -299,6 +356,8 @@
 
 
 <section>
+
+
     <div class="about" id="about">
         
 
@@ -311,9 +370,11 @@
 
         </div> -->
 
+
+
         <div>
             <h3>供应商工具</h3>
-            <p>成为供应商</p>
+            <p class="clickable" id="contact-link-parent"><a href="#" id="contact-link">成为供应商</a></p>
             <p>认证供应商</p>
             <p>销售您的产品</p>
             <p>销售您的产品</p>
@@ -324,24 +385,26 @@
         <div>
             <h3>帮助中心</h3>
             <p>购前须知</p>
+            <p>购买指南</p>
             <p>技术支持</p>
             <p>咨询采购专家</p>
-            <p>举报侵权行为</p>
 
         </div>
 
 
-
-        <div class="aboutUS" id="aboutUS">
+         <div class="aboutUS" id="aboutUS">
             <div>
                 <h3>关于我们</h3>
-                <p><a href="#" id="contact-link">联系我们</a></p>
-                <p><a href="#about-section" id="contact-link2">关于龙嘉兴</a></p>
-                <p><a href="#shop" id="contact-link3">我们的服务</a></p>
-                <p><a href="#" id="contact-link4">加入我们</a></p>
+                <p class="clickable" id="contact-link-parent"><a href="#" id="contact-link">联系我们</a></p>
+                <p class="clickable" id="contact-link2-parent"><a href="#about-section" id="contact-link2">关于龙嘉兴</a></p>
+                <p class="clickable" id="contact-link3-parent"><a href="#shop" id="contact-link3">我们的服务</a></p>
+                <p class="clickable" id="contact-link4-parent"><a href="#" id="contact-link4">加入我们</a></p>
             </div>
-        </div>
+         </div>
 
+
+    </div>
+    <div class="contact">
         <div id="contact-modal" class="modal">
             <div class="modal-content">
                 <span class="close-btn">&times;</span>
@@ -351,57 +414,9 @@
                 <p><strong>地址：</strong>厦门市湖里区某某路88号</p>
             </div>
         </div>
-    </div>
+    </div>  
 
 
-     <!-- 可提交文件发送邮件
-    <div class="messageBox">
-        <div class="fileUploadWrapper">
-            <label for="file">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 337 337">
-                    <circle
-                        stroke-width="20"
-                        stroke="#6c6c6c"
-                        fill="none"
-                        r="158.5"
-                        cy="168.5"
-                        cx="168.5"
-                    ></circle>
-                    <path
-                        stroke-linecap="round"
-                        stroke-width="25"
-                        stroke="#6c6c6c"
-                        d="M167.759 79V259"
-                    ></path>
-                    <path
-                        stroke-linecap="round"
-                        stroke-width="25"
-                        stroke="#6c6c6c"
-                        d="M79 167.138H259"
-                    ></path>
-                </svg>
-                <span class="tooltip">添加图片</span>
-            </label>
-            <input type="file" id="file" name="file" />
-        </div>
-        <input required="" placeholder="请输入消息..." type="text" id="messageInput" />
-        <button id="sendButton">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663">
-                <path
-                    fill="none"
-                    d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-                ></path>
-                <path
-                    stroke-linejoin="round"
-                    stroke-linecap="round"
-                    stroke-width="33.67"
-                    stroke="#6c6c6c"
-                    d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-                ></path>
-            </svg>
-        </button>
-    </div>
-    -->
   
 </section>
 
@@ -500,8 +515,8 @@
                 
             </div>
         </section>
-
-        <script src="script.js"></script>
+</main> <!-- main 结束 -->
+        <script src="/longjiaxing/script.js" defer></script>
 </body>
 
 <footer>

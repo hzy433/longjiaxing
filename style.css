@@ -18,7 +18,9 @@
 }
 /* 页面基础样式 */
 
-
+html{
+    scroll-behavior: smooth; 
+}
 
 
 
@@ -111,7 +113,11 @@ header {
     overflow-y: hidden;  */
     
 }
+header h1 {
 
+margin-left: -70px;
+background-size: 200px;
+}
 
 
 header a {
@@ -119,30 +125,235 @@ header a {
     text-decoration: none;
 }
 
-header a::before {
+/* 仅作用于主菜单的链接 */
+header a:not(.dropdown-menu a)::before {
     will-change: transform; /* 提示浏览器优化 */
     content: '';
     position: absolute;
     bottom: -2px;
     width: 100%;
     height: 4px;
-    background-color: #040d86;
+    background-color: #0414ff;
     border-radius: 12px;
     transform: scaleX(0);
     transform-origin: right; /* 固定为 left */
     transition: transform 0.2s ease-in-out;
 }
 
-header a:hover::before {
+/* 鼠标悬停时的动画效果 */
+header a:not(.dropdown-menu a):hover::before {
     transform: scaleX(1);
     width: 100%;
     transform-origin: left;
-    transform: scaleX(50px);
     transition: transform 0.3s ease-in-out; /* 确保动画一致 */
 }
-header a::before {
-    pointer-events: none; /* 防止动画被中断 */
+
+/* 防止动画被中断 */
+header a:not(.dropdown-menu a)::before {
+    pointer-events: none;
 }
+
+
+
+
+
+/* 子菜单容器样式 */
+.dropdown-menu {
+    display: none; /* 默认隐藏 */
+    position: absolute;
+    top: 140%; /* 根据需要调整位置 */
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 1000; /* 确保子菜单在最上层 */
+    text-align: left;
+}
+
+/* 子菜单链接的基础样式 */
+.dropdown-menu a {
+    position: relative; /* 为伪元素提供定位上下文 */
+    display: block; /* 子菜单竖直排列 */
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px 20px;
+    transition: color 0.3s ease, background-color 0.3s ease; /* 添加颜色和背景过渡 */
+}
+
+/* 子菜单链接的下划线动画 */
+.dropdown-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* 位于文字底部 */
+    left: 0;
+    width: 0; /* 初始宽度为 0 */
+    height: 2px; /* 下划线高度 */
+    background-color: #0414ff; /* 下划线颜色 */
+    transition: width 0.3s ease; /* 添加宽度过渡动画 */
+}
+
+/* 鼠标悬停时触发下划线动画 */
+.dropdown-menu a:hover::after {
+    width: 100%; /* 下划线扩展到整个文字宽度 */
+}
+
+/* 鼠标悬停时改变文字颜色和背景 */
+.dropdown-menu a:hover {
+    color: #0414ff; /* 改变文字颜色 */
+    background-color: #f0f0f0; /* 改变背景颜色 */
+}
+
+
+
+/* 鼠标悬停时显示子菜单 */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+
+/* 缓冲区域样式 */
+.dropdown-buffer {
+    position: absolute;
+    top: 100%; /* 紧贴父菜单底部 */
+    left: 0;
+    width: 100%;
+    height: 20px; /* 缓冲区域高度 */
+    background: transparent; /* 透明背景 */
+    pointer-events: auto; /* 确保缓冲区域可以接收鼠标事件 */
+}
+
+
+
+/* 主导航样式 */
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1px, 5vw, 50px);
+    width: 100%;
+    height: 7vh;
+    position: relative;
+    padding: 0 10px;
+}
+
+/* 主导航链接样式 */
+.nav-item {
+    position: relative;
+    color: #535353;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(5px, 4.5vw, 25px);
+    text-align: center;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+/* 主导航链接的颜色 */
+.nav-link {
+    color: #4b4a4a;
+}
+
+/* 侧边导航栏 */
+@media (max-width: 970px) {
+    h1 {
+        background-size: 60%; /* 调整背景大小 */
+        left: 0; /* 使用 left 替代 margin */
+left: -70px;
+        margin: 0; /* 移除 margin */
+        width: 400px;
+
+    }
+
+    .nav {
+        opacity: 0;
+        position: absolute;
+        right: -80px; /* 根据 logo 宽度调整 */
+        top: 100px;
+        white-space: nowrap; /* 防止换行 */
+        -webkit-overflow-scrolling: touch; /* 平滑滚动 */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 20%;
+        height: auto;
+            transition: all 0.3s ease-out; /* 添加过渡效果 */
+        transform: scaleX(100%);
+        background-color: #ffffff;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* 柔和阴影 */
+        border-radius: 6px;
+
+    }
+
+    .nav-item {
+
+        display: flex;
+margin-top: 5px;
+        align-items: center; /* 垂直居中 */
+        justify-content: center; /* 水平居中 */
+        padding: 5px 0; /* 添加垂直内边距 */
+        color: #535353;
+        text-decoration: none;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 700;
+        font-size: clamp(5px, 4.5vw, 25px);
+        background-color: transparent;
+    }
+
+
+
+    .language-switch {
+        margin-left: 0;
+        padding: 8px 12px;
+    }
+
+
+    /* 子菜单容器样式 */
+.dropdown-menu {
+    display: none; /* 默认隐藏 */
+    position: absolute;
+    top: 140%; /* 根据需要调整位置 */
+    left: -30px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 1000; /* 确保子菜单在最上层 */
+    text-align: left;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -182,98 +393,6 @@ header a::before {
 
 
 
-
-.menu {
-    display:none;
-}
-
-
-.nav{
-
-    padding: 0px,10px,0px;
-    display: flex;
-    gap: clamp(1px,5vw, 50px);
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 7vh;
-    transition: height 0.3s ease; /* 添加过渡动画 */
-
-}
-/* 字体 */
-.nav-item {
-    color: #535353;
-
-    text-decoration: none;
-    transition: all 0.3s;
-    z-index: 991;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    position: relative;
-
-    text-align: center;
-    white-space: nowrap;
-    font-size: clamp(5px, 4.5vw, 25px);
-
-
-
-    display: inline-block;
-    vertical-align: middle;
-    background-color: transparent; /* 新增 */
-}
-
-
-
-@media (max-width: 970px) {
-    h1 {
-        background-size: 60%; /* 调整背景大小 */
-        left: 0; /* 使用 left 替代 margin */
-left: -70px;
-        margin: 0; /* 移除 margin */
-        width: 400px;
-
-    }
-
-    .nav {
-        opacity: 0;
-        position: absolute;
-        right: -80px; /* 根据 logo 宽度调整 */
-        top: 100px;
-        white-space: nowrap; /* 防止换行 */
-        -webkit-overflow-scrolling: touch; /* 平滑滚动 */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        width: 20%;
-        height: auto;
-            transition: all 0.3s ease-out; /* 添加过渡效果 */
-        transform: scaleX(100%);
-        background-color: #f7f6f6;
-
-    }
-
-    .nav-item {
-
-        display: flex;
-margin-top: 5px;
-        align-items: center; /* 垂直居中 */
-        justify-content: center; /* 水平居中 */
-        padding: 5px 0; /* 添加垂直内边距 */
-        color: #535353;
-        text-decoration: none;
-        font-family: 'DM Sans', sans-serif;
-        font-weight: 700;
-        font-size: clamp(5px, 4.5vw, 25px);
-        background-color: transparent;
-    }
-
-
-
-    .language-switch {
-        margin-left: 0;
-        padding: 8px 12px;
-    }
-}
 
 
 
@@ -794,7 +913,7 @@ background-color: #040d86;
     width: 100%;
     height: 80%;
     object-fit: cover; /* 保持比例填充容器 */
-    overflow: hidden;
+    overflow: auto;
     transition: transform 0.5s ease; /* 缩放动画 */
 }
 
@@ -913,8 +1032,9 @@ text-align: left;
 
 /* 悬停效果 */
 .card:hover {
-    transform: translateY(-10px); /* 悬停时轻微上移 */
+    transform: translateY(-20px); /* 悬停时轻微上移 */
     cursor:pointer;
+    transition: transform 0.3s ease;
 }
 
 /* 卡片图片 */
@@ -1129,6 +1249,15 @@ bottom: 5px;
 
 
 
+
+
+
+
+
+
+
+
+
 /* 产品区域容器 */
 .product {
     display: grid; /* 改为grid布局 */
@@ -1145,7 +1274,7 @@ bottom: 5px;
 
 /* 单个产品卡片 */
 .product div {
-
+    padding: 10px;
     text-align: center;
     background: white;
     border-radius: 12px;
@@ -1153,6 +1282,7 @@ bottom: 5px;
     transition: transform 0.3s ease;
     width: 100%; /* 让卡片宽度适应网格 */
     max-width: 400px; /* 限制最大宽度 */
+    height: auto;
 
 }
 
@@ -1186,14 +1316,17 @@ top: auto;
 text-align: start;
 padding-left: 0.5rem;
     color: #333;
+    height: 50px;
+    line-height: 1.3; /* 调整产品标题的行距 */
+
 }
 
 /* 产品描述 */
 .product p {
 
 text-align: start;
-padding-top: 1rem;
-height: 150px;
+padding-top: 1.3rem;
+height: 200px;
 padding-left: 0.5rem;
     font-size: clamp(12px, 1.6vw, 16px);
     font-weight: 500;
@@ -1204,13 +1337,26 @@ padding-left: 0.5rem;
 }
 
 
+
+
+
+/* 去除默认蓝色样式 */
+.product-action a {
+    color: inherit; /* 继承父元素的颜色 */
+    text-decoration: none; /* 去掉下划线 */
+    font-weight: bold; /* 可选：设置字体加粗 */
+}
+
+
+
+
 .product .product-action {
     display: inline-block;
 
     cursor: pointer;
-    padding: clamp(10px, 0vw, 15px) clamp(20px, 10vw, 40px);
+    padding: clamp(10px, 0vw, 15px) clamp(20px, 10vw, 45px);
     font-size: clamp(16px, 1.6vw, 20px);
-    margin: 0px 5px 20px; /* 上 左右 下 */
+
     font-weight: bold;
     line-height: 1.1;
     color: #333;
@@ -1386,6 +1532,7 @@ left: clamp(0px,7.5vw,50vw);
     padding-left: 15px; /* 为装饰元素留空间 */
 }
 
+
 /* 悬停效果增强 */
 .about p:hover {
     color: #d63434;
@@ -1430,25 +1577,25 @@ left: clamp(0px,7.5vw,50vw);
 
 /* 弹窗样式 */
 .modal {
-    display: none; /* 默认隐藏 */
-    position: fixed;
-    z-index: 1000;
-right: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
+    display: none; /* 隐藏复选框 */
 
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    position: fixed; /* 固定定位，确保相对于视口 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 占满视口宽度 */
+    height: 100%; /* 占满视口高度 */
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+    z-index: 9999; /* 确保在最上层 */
+    transition: all 0.3s ease;  /* 添加过渡动画 */
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 30px;
-    border: 1px solid #888;
+width: 100%;
+padding: 20px;
+background-color: white;
 
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .close-btn {
@@ -1457,6 +1604,8 @@ right: 0;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    padding-right: 20px;
+
 }
 
 .close-btn:hover,
@@ -1464,6 +1613,12 @@ right: 0;
     color: black;
     text-decoration: none;
 }
+
+
+
+
+
+
 
 
 
@@ -1485,7 +1640,9 @@ right: 0;
     text-decoration: underline; /* 鼠标悬停时显示下划线 */
 }
 
-
+.clickable {
+    cursor: pointer; /* 鼠标悬停时显示手型指针 */
+}
 
 
 
@@ -1503,8 +1660,9 @@ right: 0;
     /* 订阅 */
     
     background-color: #737373;/* 背景颜色 */
+
     color: white;
-    padding: 60px 0px 10px;  /* 上 左右 下 */
+    padding: 10px 0px 10px;  /* 上 左右 下 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1964,7 +2122,7 @@ footer {
     justify-content:center;
     align-items:flex-end;
     width: 100%; /* 新增 */
-    height: 15vh;
+    height: 10vh;
     box-sizing: border-box; /* 确保border计算在宽度内 */
 }
 

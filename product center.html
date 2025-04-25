@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- 确保 viewport 设置正确（防止默认缩放）： -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>龙嘉兴电子科技官网</title>
+    <link rel="stylesheet" href="/longjiaxing/style.css">
+    <link rel="stylesheet" href="/longjiaxing/product.css">
+    <link rel="stylesheet" href="/longjiaxing/product center.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+
+
+
+
+<body>
+    <header>
+
+
+        
+
+        <h1>龙嘉兴电子科技</h1>
+
+        <label class="hamburger">
+            <input type="checkbox" class="checkbox">
+            <svg viewBox="0 0 32 32">
+              <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+              <path class="line" d="M7 16 27 16"></path>
+            </svg>
+          </label>
+          
+        <nav class="nav">
+
+            <a href="index.html#home" class="nav-item is-active" active-color="orange">首页</a>
+            
+            
+            <div class="nav-item dropdown" active-color="green">
+                <a href="index.html#about-section" class="nav-link">关于</a>
+                <div class="dropdown-buffer"></div> <!-- 缓冲区域 -->
+                <div class="dropdown-menu">
+                    <a href="index.html#about-section">公司简介</a>
+                    <a href="index.html">发展历程</a>
+                    <a href="index.html">企业文化</a>
+                </div>
+            </div>
+
+
+            <div class="nav-item dropdown" active-color="blue">
+                <a href="#product" class="nav-link">产品</a>
+                <div class="dropdown-buffer"></div> <!-- 缓冲区域 -->
+                <div class="dropdown-menu">
+                    <a href="product.html">产品中心</a>
+                    <a href="product center.html">成品中心</a>
+                    <a href="#product3">产品手册2</a>
+                </div>
+            </div>
+
+
+            <div class="nav-item dropdown" active-color="red">
+                <a href="#newsletter" class="nav-link">服务</a>
+                <div class="dropdown-buffer"></div> <!-- 缓冲区域 -->
+                <div class="dropdown-menu">
+                    <a href="index.html##newsletter">客户支持</a>
+                    <a href="index.html#newsletter">售后服务</a>
+                    <a href="index.html#newsletter">技术支持</a>
+                </div>
+            </div>
+
+
+
+            <div class="nav-item dropdown" active-color="rebeccapurple">
+                <a href="#newsletter" class="nav-link">支持</a>
+                <div class="dropdown-buffer"></div> <!-- 缓冲区域 -->
+                <div class="dropdown-menu">
+                    <a href="#support1">常见问题</a>
+                    <a href="#support2">文档下载</a>
+                    <a href="#support3">联系我们</a>
+                </div>
+            </div>
+
+
+
+            <span class="nav-indicator"></span>
+        </nav>
+    
+        <!-- 添加语言切换按钮和搜索图标 -->
+        <!-- <div class="header-actions">
+            <button class="language-switch">中文</button>
+            <button class="search-icon">
+                <i class="fas fa-search"></i>
+            </button>
+        </div> -->
+
+         
+           
+    </header>
+
+
+
+<main>
+
+
+<section class="choice">
+    <div class="selector">
+        <h2>选择类别：</h2>
+        <div class="options">
+            <div class="option">
+                <input type="checkbox" id="all" checked onchange="toggleAll(this)">
+                <label for="all">全部</label>
+            </div>
+
+            <div class="option">
+                <input type="checkbox" id="ZP" class="filter-checkbox" checked onchange="filterProducts()">
+                <label for="ZP">帐篷</label>
+            </div>
+
+            <div class="option">
+                <input type="checkbox" id="DSDDC" class="filter-checkbox" checked onchange="filterProducts()">
+                <label for="DSDDC">低速电动车</label>
+            </div>
+
+            <div class="option">
+                <input type="checkbox" id="TYNGF" class="filter-checkbox" checked onchange="filterProducts()">
+                <label for="TYNGF">太阳能光伏</label>
+            </div>
+
+            <div class="option">
+                <input type="checkbox" id="CNDY" class="filter-checkbox" checked onchange="filterProducts()">
+                <label for="CNDY">储能电源</label>
+            </div>
+
+            <div class="option">
+                <input type="checkbox" id="HWD" class="filter-checkbox" checked onchange="filterProducts()">
+                <label for="HWD">户外灯</label>
+            </div>
+
+
+            
+        </div>
+    </div>
+</section>
+
+<section class="product-all" id="product-all">
+    <div class="product-item" data-category="ZP">
+        <img src="images/CP/帐篷 鸿.png" alt="帐篷">
+        <h3>帐篷 鸿</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+    <div class="product-item" data-category="ZP">
+        <img src="images/CP/帐篷 筑观.png" alt="帐篷">
+        <h3>帐篷 筑观</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+
+
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+    <div class="product-item" data-category="DSDDC">
+        <img src="images/CP/A8P.png" alt="低速电动车">
+        <h3>A8P</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+    <div class="product-item" data-category="DSDDC">
+        <img src="images/CP/A900.png" alt="低速电动车">
+        <h3>A900</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+    <div class="product-item" data-category="DSDDC">
+        <img src="images/CP/A901.png" alt="低速电动车">
+        <h3>A901</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+    <div class="product-item" data-category="DSDDC">
+        <img src="images/CP/P100.png" alt="低速电动车">
+        <h3>A901</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+
+
+    <div class="product-item" data-category="TYNGF">
+        <img src="images/CP/200W SOLAR PANELS.png" alt="太阳能光伏">
+        <h3>200W SOLAR PANELS</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+    <div class="product-item" data-category="TYNGF">
+        <img src="images/CP/400W SOLAR PANELS.png" alt="太阳能光伏">
+        <h3>400W SOLAR PANELS</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+
+
+    <div class="product-item" data-category="CNDY">
+        <img src="images/CP/B2000 EXPANSION BATTERY PACK.png" alt="储能电源">
+        <h3>B2000 EXPANSION BATTERY PACK</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+    
+    <div class="product-item" data-category="CNDY">
+        <img src="images/CP/B3000 EXPANSION BATTERY PACK.png" alt="储能电源">
+        <h3>B3000 EXPANSION BATTERY PACK</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/Mini Lantern.png" alt="户外灯">
+        <h3>Mini Lantern</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/F2207A0 HEAD LIGHT.png" alt="户外灯">
+        <h3>F2207A0 HEAD LIGHT</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/F2209B0 SPIRIT LIGHT.png" alt="户外灯">
+        <h3>F2209B0 SPIRIT LIGHT</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/FHO2-A00 HEAD LIGHT.png" alt="户外灯">
+        <h3>FHO2-A00 HEAD LIGHT</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/FHO3-A00 HEAD LIGHT.png" alt="户外灯">
+        <h3>FHO3-A00 HEAD LIGHT</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/F2101A1 PEN LIGHT.png" alt="户外灯">
+        <h3>F2101A1 PEN LIGHT</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/灭蚊灯 DX60插电款.png" alt="灭蚊灯">
+        <h3>灭蚊灯 DX60插电款</h3>
+        <p>介绍文本介绍文本<br>介绍文本介绍文本介绍文本</p>
+
+        <p class="product-action">
+            <a href="files/xxxx.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">立即购买</p>
+    </div>
+
+</section>
+
+</main>
+
+<script src="/longjiaxing/script.js" defer></script>
+
+        
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<footer>
+    <div class="footer-content">
+        <p><strong>供应商服务热线</strong></p>
+    <p><strong>中国大陆：(86)-191-5623-6603</strong></p>
+    <!-- <p><strong>香港：(852)188-88888</strong></p> -->
+
+        
+        <!-- <p>
+            <a href="#">使用条款</a>
+            <a href="#">隐私策略</a>
+            <a href="#">安全措施</a>
+            <a href="#">IP策略</a>
+            <a href="#">Cookie政策</a>
+        </p> -->
+        
+        <p1>版权所有 © 2025 厦门龙嘉兴新能源科技有限公司 保留所有权利。</p1>
+    </div>
+</footer>
+</html>

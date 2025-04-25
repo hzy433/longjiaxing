@@ -48,7 +48,7 @@ document.querySelector('.hamburger input').addEventListener('change', function()
 
 
 
-
+      // 丝滑页面滑动
 document.querySelectorAll('.nav-item').forEach(item => {
   item.addEventListener('click', function(event) {
       const targetId = this.getAttribute('href'); // 获取目标 ID
@@ -71,33 +71,164 @@ document.querySelectorAll('.nav-item').forEach(item => {
 
 
 
+
+
+
+// 弹窗
 // 获取元素
-const contactLink = document.getElementById('contact-link');
-const contactLink4 = document.getElementById('contact-link4');
-const modal = document.getElementById('contact-modal');
+// 获取弹窗元素
+const contactModal = document.getElementById('contact-modal');
 const closeBtn = document.querySelector('.close-btn');
 
-// 点击“联系我们”显示弹窗
-contactLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    modal.style.display = 'block';
-    modal.style.top ='20%'
-});
-// 点击“加入我们”显示弹窗
-contactLink4.addEventListener('click', (e) => {
-  e.preventDefault();
-  modal.style.display = 'block';
-  modal.style.top ='20%'
+// 为所有带有 .clickable 类的父级 <p> 元素添加点击事件
+document.querySelectorAll('.clickable').forEach((element) => {
+    element.addEventListener('click', (e) => {
+        const targetId = element.querySelector('a').id; // 获取子链接的 id
+
+        // 判断是否是需要弹窗的链接
+        if (targetId === 'contact-link' || targetId === 'contact-link4') {
+            e.preventDefault(); // 阻止默认跳转行为
+            contactModal.style.display = 'block'; // 显示弹窗
+        } else {
+            // 对于其他链接，正常跳转
+            const href = element.querySelector('a').getAttribute('href');
+            if (href && href !== '#') {
+                window.location.href = href; // 跳转到目标链接
+            }
+        }
+    });
 });
 
 // 点击关闭按钮隐藏弹窗
 closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
+    contactModal.style.display = 'none';
 });
 
 // 点击弹窗外部隐藏弹窗
 window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
+    if (e.target === contactModal) {
+        contactModal.style.display = 'none';
     }
 });
+
+
+
+
+
+
+
+
+
+
+// 导航栏子菜单
+
+const dropdowns = document.querySelectorAll('.nav-item.dropdown');
+
+dropdowns.forEach(dropdown => {
+    let hideTimeout;
+
+    dropdown.addEventListener('mouseenter', () => {
+        clearTimeout(hideTimeout); // 清除隐藏延迟
+        const menu = dropdown.querySelector('.dropdown-menu');
+        menu.style.display = 'block';
+    });
+
+    dropdown.addEventListener('mouseleave', () => {
+        const menu = dropdown.querySelector('.dropdown-menu');
+        hideTimeout = setTimeout(() => {
+            menu.style.display = 'none';
+        }, 150); // 延迟 200 毫秒隐藏
+    });
+});
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const allCheckbox = document.getElementById('all');
+    if (allCheckbox) {
+        allCheckbox.addEventListener('change', toggleAll);
+    } else {
+        console.error("未找到 id 为 'all' 的复选框");
+    }
+});
+
+function toggleAll(checkbox) {
+    const isChecked = checkbox.checked;
+    document.querySelectorAll('.filter-checkbox:not(#all)').forEach(cb => {
+        cb.checked = isChecked;
+    });
+    filterProducts();
+}
+
+function filterProducts() {
+    const allCheckbox = document.getElementById('all');
+    if (!allCheckbox) {
+        console.error("未找到 id 为 'all' 的复选框");
+        return;
+    }
+
+    const allChecked = allCheckbox.checked;
+    const otherCheckboxes = document.querySelectorAll('.filter-checkbox:not(#all)');
+    const selectedCategories = Array.from(otherCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.id);
+
+    if (allChecked) {
+        document.querySelectorAll('.product-item').forEach(product => {
+            product.style.display = 'block';
+        });
+    } else {
+        if (selectedCategories.length === 0) {
+            document.querySelectorAll('.product-item').forEach(product => {
+                product.style.display = 'none';
+            });
+        } else {
+            document.querySelectorAll('.product-item').forEach(product => {
+                const category = product.getAttribute('data-category');
+                product.style.display = selectedCategories.includes(category) ? 'block' : 'none';
+            });
+        }
+    }
+}
+
+function toggleAll(checkbox) {
+    const isChecked = checkbox.checked;
+    document.querySelectorAll('.filter-checkbox:not(#all)').forEach(cb => {
+        cb.checked = isChecked;
+    });
+    filterProducts();
+}
+
+function filterProducts() {
+    const allCheckbox = document.getElementById('all');
+    if (!allCheckbox) {
+        console.error("未找到 id 为 'all' 的复选框");
+        return;
+    }
+
+    const allChecked = allCheckbox.checked;
+    const otherCheckboxes = document.querySelectorAll('.filter-checkbox:not(#all)');
+    const selectedCategories = Array.from(otherCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.id);
+
+    if (allChecked) {
+        document.querySelectorAll('.product-item').forEach(product => {
+            product.style.display = 'block';
+        });
+    } else {
+        if (selectedCategories.length === 0) {
+            document.querySelectorAll('.product-item').forEach(product => {
+                product.style.display = 'none';
+            });
+        } else {
+            document.querySelectorAll('.product-item').forEach(product => {
+                const category = product.getAttribute('data-category');
+                product.style.display = selectedCategories.includes(category) ? 'block' : 'none';
+            });
+        }
+    }
+}

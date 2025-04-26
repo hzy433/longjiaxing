@@ -482,26 +482,16 @@ z-index: 0;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 .choice {
     padding-top: 110px;
-    padding-left: clamp(20px,5vw,50px);
+    padding-left: clamp(0px,2vw,50px);
+    width: 100%;
 }
 
 .selector {
     margin-bottom: 20px;
     text-align: left;
+    width: 80%;
 }
 
 .options {
@@ -523,39 +513,43 @@ margin-top: 20PX;
 
 
 
-
-.product-all {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 30px;
-    max-width: 100%;
-    height: auto;
-    min-height: 1000px;
-    justify-items: center;
-    align-items: start;
-    padding: 20px;
-}
-/* 添加媒体查询以在移动端调整为两列 */
-@media (max-width: 768px) {
-    .product-all {
-        grid-template-columns: repeat(2, 1fr); /* 两列布局 */
-        gap: 10px; /* 减小间距 */
-    }
-}
-
-
-
-
-
-
-
 .product-item {
     display: block; /* 默认显示 */
+
+
 }
 
 .product-item.hidden {
     display: none; /* 隐藏 */
 }
+
+
+.product-all {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));/* 自动适配  宽度最小350 最大1fr */
+    gap: 20px;
+
+    height: auto;
+    min-height: 1000px;
+    justify-items: center;
+    justify-content: center;
+    align-items: start;
+padding: 10px;
+}
+
+/* 添加媒体查询以在移动端调整为两列 */
+@media (max-width: 768px) {
+    .product-all {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+        gap: 10px; /* 减小间距 */
+    }
+
+}
+
+
+
+
 /* 单个产品卡片 */
 .product-all div {
 
@@ -565,8 +559,8 @@ margin-top: 20PX;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     width: 100%; /* 让卡片宽度适应网格 */
-    max-width: 400px; /* 限制最大宽度 */
     height: auto;
+    padding: 10px;
 
 }
 
@@ -587,7 +581,7 @@ margin-top: 20PX;
 /* 产品图片 */
 .product-all img {
     width: 100%;
-    height: auto;
+
     border-radius: 10px;
     aspect-ratio: 1/1; /* 保持正方形 */
     object-fit: cover; /* 填充容器 */
@@ -595,7 +589,7 @@ margin-top: 20PX;
 
 /* 产品标题 */
 .product-all h3 {
-    font-size: clamp(24px, 2vw, 24px); /* 响应式字体 */
+    font-size: clamp(18px, 2vw, 24px); /* 响应式字体 */
 top: auto;
 text-align: start;
 height: 60px;
@@ -608,12 +602,14 @@ padding-left: 0.5rem;
 .product-all p {
 
 text-align: start;
-padding-top: 1rem;
+text-overflow: ellipsis; /* 添加省略号 */
 height: clamp(70px, 1.6vw, 110px);
 padding-left: 0.5rem;
-    font-size: clamp(12px, 1.6vw, 16px);
+padding-right: 0.5rem;
+    font-size: clamp(12px, 1.6vw, 14px);
     font-weight: 500;
     line-height: 1.6;
+    height: 150px;
     color: #666;
     margin-bottom: 20px;
 
@@ -624,8 +620,9 @@ padding-left: 0.5rem;
     display: inline-block;
 
     cursor: pointer;
-    padding: clamp(10px, 0vw, 15px) clamp(20px, 10vw, 40px);
+    padding: clamp(10px, 2vw, 10px) clamp(15px, 5vw, 40px);
     font-size: clamp(14px, 1.6vw, 20px);
+    text-wrap: nowrap;
     margin: 0px 5px 20px; /* 上 左右 下 */
     font-weight: bold;
     line-height: 1.1;
@@ -656,9 +653,12 @@ height: 40px;
 
 /* 去除默认蓝色样式 */
 .product-action a {
+
     color: inherit; /* 继承父元素的颜色 */
     text-decoration: none; /* 去掉下划线 */
     font-weight: bold; /* 可选：设置字体加粗 */
+
+
 }
 
 

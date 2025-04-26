@@ -342,24 +342,37 @@ z-index: 0;
 
 
 
-.welcome{
+/* 定义出场动画 */
+/* 定义新的出场动画 */
+@keyframes fadeZoomIn {
+    0% {
+        transform: scale(0.8); /* 初始缩小 */
+        opacity: 0; /* 初始透明 */
+    }
+    50% {
+        transform: scale(1.05); /* 稍微放大 */
+        opacity: 0.7; /* 半透明 */
+    }
+    100% {
+        transform: scale(1); /* 回到正常大小 */
+        opacity: 1; /* 完全显示 */
+    }
+}
 
+.welcome {
     width: 100%;
     height: 66vh;
 
     display: flex;
     align-items: center; /* 垂直居中 */
-justify-content: center;
+    justify-content: center; /* 水平居中 */
 
-justify-content: center; /* 水平居中 */
-
-
+    animation: fadeZoomIn 0.6s ease-out; /* 应用动画，持续 1 秒 */
 }
-.welcome p{
+
+.welcome p {
     font-size: 38px;
     font-weight: bold;
-
-
 }
 
 

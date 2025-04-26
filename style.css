@@ -550,6 +550,13 @@ z-index: 0;
     }
 }
 
+.background home{
+    width: 100%;
+    max-width: 1400px;
+    height: 66vh;
+}
+
+
 /* 应用动画到首页 .home */
 .home {
     opacity: 0;
@@ -1010,8 +1017,8 @@ text-align: left;
     flex-wrap: wrap;/* 允许换行 */
     justify-content:flex-start;/* 靠左 */
     overflow-x: auto; /* 允许横向滚动 */
-    gap: 60px; /* 卡片之间的间距 */
-    padding: 20px; /* 添加内边距 */
+    gap: 40px; /* 卡片之间的间距 */
+
     width: 100%; /* 占满父容器宽度 */
 
     box-sizing: border-box; /* 包括内边距在宽度计算内 */
@@ -1269,6 +1276,7 @@ bottom: 5px;
     justify-items: center; /* 水平居中对齐 */
     align-items: start; /* 垂直顶部对齐 */
     padding: clamp(120px, 12vw, 160px) clamp(20px, 7vw, 80px) clamp(20px, 5vw, 40px); /* 调整底部padding */
+
     position: relative; /* 必须添加定位上下文 */
 }
 
@@ -1283,7 +1291,6 @@ bottom: 5px;
     width: 100%; /* 让卡片宽度适应网格 */
     max-width: 400px; /* 限制最大宽度 */
     height: auto;
-
 }
 
 /* 悬停提升效果 */
@@ -1397,7 +1404,7 @@ height: 40px;
     text-align: left;
 
 top: clamp(30px,2vw,60px);
-left: clamp(0px,7.5vw,50vw);
+left: clamp(0px,5vw,20vw);
 
 
 

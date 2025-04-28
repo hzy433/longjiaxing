@@ -71,7 +71,7 @@ body {
 
 
 /* 添加id器 隐藏效果 */
-  .about-header, .card-container, .more-btn,.about-description, .about-image, .card, .title, .card1, .img,.flash, .product-action, .product2-action {
+  .about-header, .card-container, .more-btn,.about-description, .about-image, .card, .title, .card1, .img,.flash, .product-action, .product2-action, .div2 {
     opacity: 0;
     filter: blur(5px);
     transform: translateX(-100%);
@@ -233,7 +233,7 @@ header a:not(.dropdown-menu a)::before {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: clamp(1px, 5vw, 50px);
+    gap: clamp(1px, 5vw, 100px);
     width: 100%;
     height: 7vh;
     position: relative;
@@ -247,10 +247,11 @@ header a:not(.dropdown-menu a)::before {
     text-decoration: none;
     font-family: 'DM Sans', sans-serif;
     font-weight: 700;
-    font-size: clamp(5px, 4.5vw, 25px);
+    font-size: clamp(5px, 4.5vw, 20px);
     text-align: center;
     white-space: nowrap;
     transition: all 0.3s ease;
+left: 50px;
 }
 
 /* 主导航链接的颜色 */
@@ -263,7 +264,7 @@ header a:not(.dropdown-menu a)::before {
     h1 {
         background-size: 60%; /* 调整背景大小 */
         left: 0; /* 使用 left 替代 margin */
-left: -70px;
+        left: -70px;
         margin: 0; /* 移除 margin */
         width: 400px;
 
@@ -302,6 +303,7 @@ margin-top: 5px;
         font-weight: 700;
         font-size: clamp(5px, 4.5vw, 25px);
         background-color: transparent;
+        left: 0px;
     }
 
 
@@ -327,8 +329,6 @@ margin-top: 5px;
     text-align: left;
 }
 }
-
-
 
 
 
@@ -562,7 +562,7 @@ z-index: 0;
     opacity: 0;
     animation: fadeInUp 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards, 
                scaleDown 1.2s ease forwards; /* 添加缩放动画 */
-    background-color: rgb(255, 236, 243);
+    background-color: rgb(255, 255, 255);
     color: white;
     width: 100%; /* 用100%替代100vw */
     box-sizing: border-box; /* 包含padding在宽度内 */
@@ -920,7 +920,7 @@ background-color: #040d86;
     width: 100%;
     height: 80%;
     object-fit: cover; /* 保持比例填充容器 */
-    overflow: auto;
+    overflow:visible;
     transition: transform 0.5s ease; /* 缩放动画 */
 }
 
@@ -1018,9 +1018,10 @@ text-align: left;
     justify-content:flex-start;/* 靠左 */
     overflow-x: auto; /* 允许横向滚动 */
     gap: 40px; /* 卡片之间的间距 */
-
+    will-change: transform; /* 提示浏览器优化 */
+    overflow: visible; /* 确保子元素不会被裁剪 */
     width: 100%; /* 占满父容器宽度 */
-
+    height: auto;
     box-sizing: border-box; /* 包括内边距在宽度计算内 */
 }
 
@@ -1034,7 +1035,7 @@ text-align: left;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     position: relative; /* 确保定位有效 */
-    overflow: hidden;
+
 }
 
 /* 悬停效果 */
@@ -1268,7 +1269,7 @@ bottom: 5px;
 /* 产品区域容器 */
 .product {
     display: grid; /* 改为grid布局 */
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); /* 自动适配列数 */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 最小宽度350自动适配列数 */
     gap: 40px; /* 网格间距 */
     max-width: 100%;
     height: auto;
@@ -1324,15 +1325,26 @@ text-align: start;
 padding-left: 0.5rem;
     color: #333;
     height: 50px;
-    line-height: 1.3; /* 调整产品标题的行距 */
+    line-height: 1.1; /* 调整产品标题的行距 */
+    padding-top: 20px;
+
+
 
 }
-
+.product h3::after {
+    content: ''; /* 必须设置内容 */
+    position: absolute; /* 绝对定位 */
+    top: 0; /* 位于 h3 的顶 */
+    left: 5%; /* 距离左侧 10% */
+    width: 90%; /* 装饰线宽度为 80% */
+    height: 2px; /* 装饰线高度 */
+    background-color: #373737; /* 装饰线颜色 */
+}
 /* 产品描述 */
 .product p {
 
 text-align: start;
-padding-top: 1.3rem;
+padding-top: 1.8rem;
 height: 200px;
 padding-left: 0.5rem;
     font-size: clamp(12px, 1.6vw, 16px);
@@ -1465,27 +1477,39 @@ left: clamp(0px,5vw,20vw);
 
 
 .product div2 {
-    width: clamp(280px, 30vw, 380px); /* 更合理的范围 */
-    height: 400px;
+    width: clamp(260px, 30vw, 380px); /* 更合理的范围 */
+    height: 600px;
     text-align: center;
     background: rgb(255, 255, 255);
-    
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    cursor: pointer; /* 鼠标悬停时变为手型 */
+    display: grid;
 
     
 }
 .product div2 img{
-    width: 70%;
+    width: 100%;
+    transition: transform 0.3s ease; /* 添加平滑过渡效果 */
+
 
 }
 
+div2:hover img {
+    transform: scale(1.1); /* 悬停时放大 */
+}
+
+@media (max-width: 768px) {
+    .product div2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+        gap: 10px; /* 减小间距 */
+        height: 400px;
+    }
 
 
-
-
-
+}
 
 
 /* 底部关于区域容器 - 响应式优化 */
@@ -1604,7 +1628,9 @@ padding: 20px;
 background-color: white;
 
 }
-
+.modal-content p{
+    color: inherit; /* 继承父元素的颜色 */
+}
 .close-btn {
     color: #aaa;
     float: right;
@@ -1744,12 +1770,14 @@ input:focus {
 
     .newsletter input {
         /* 输入框专属样式 */
-        width: 180px;  /* 稍微加宽 */
+        width: 160px;  /* 稍微加宽 */
         margin-right: 15px;
         caret-color: #E0E9A3;  /* 光标颜色 */
     }
 
-
+    .newsletter button {
+        width: 80px;  /* 稍微加宽 */
+    }
     
 }
 

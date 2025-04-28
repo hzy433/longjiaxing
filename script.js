@@ -24,19 +24,47 @@ hiddenElements.forEach((el) => observer.observe(el));
 
 
 // 侧边导航栏
+// 侧边导航栏
 document.querySelector('.hamburger input').addEventListener('change', function() {
   const nav = document.querySelector('.nav');
   if (this.checked) {
       nav.style.right = '0'; // 展开
-      nav.style.opacity='1' ;
-
-
+      nav.style.opacity = '1';
   } else {
+      nav.style.opacity = '1';
+      nav.style.right = '-250px'; // 往右隐藏
+  }
+});
 
-      nav.style.opacity='1' ;
-      nav.style.right='-250px' // 往右隐藏
-      
+// 页面加载时检测窗口宽度
+document.addEventListener('DOMContentLoaded', () => {
+  const nav = document.querySelector('.nav');
+  const hamburgerInput = document.querySelector('.hamburger input');
 
+  if (window.innerWidth > 1024) { // 假设全屏宽度为 1024px
+      hamburgerInput.checked = true; // 设置复选框为选中状态
+      nav.style.right = '0'; // 展开
+      nav.style.opacity = '1';
+  } else {
+      hamburgerInput.checked = false; // 设置复选框为未选中状态
+      nav.style.right = '-250px'; // 隐藏
+      nav.style.opacity = '1';
+  }
+});
+
+// 监听窗口大小变化
+window.addEventListener('resize', () => {
+  const nav = document.querySelector('.nav');
+  const hamburgerInput = document.querySelector('.hamburger input');
+
+  if (window.innerWidth > 1024) { // 假设全屏宽度为 1024px
+      hamburgerInput.checked = true; // 设置复选框为选中状态
+      nav.style.right = '0'; // 展开
+      nav.style.opacity = '1';
+  } else {
+      hamburgerInput.checked = false; // 设置复选框为未选中状态
+      nav.style.right = '-250px'; // 隐藏
+      nav.style.opacity = '1';
   }
 });
 
@@ -238,3 +266,20 @@ function filterProducts() {
 
 
 
+  // 获取所有 "立即购买" 按钮
+  document.querySelectorAll('.buy-now').forEach(button => {
+    button.addEventListener('click', function (event) {
+        event.preventDefault(); // 阻止默认跳转行为
+
+        // 获取当前产品的 h3 内容
+        const productName = this.closest('div').querySelector('h3').innerText.trim();
+        console.log('产品名称:', productName); // 检查是否正确获取产品名称
+
+        // 动态生成 mailto 链接
+        const mailtoLink = `mailto:gracelingyao@126.com?subject=购买咨询&body=您好，我想咨询关于产品【 ${productName} 】的购买信息。%0A%0A-------来自官网`;
+        console.log('生成的邮件链接:', mailtoLink); // 检查生成的链接
+
+        // 打开邮件客户端
+        window.location.href = mailtoLink;
+    });
+});

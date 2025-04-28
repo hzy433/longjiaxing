@@ -1,0 +1,181 @@
+
+@import url('https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+
+
+/* 全局重置样式 - 去除所有元素的默认边距和内边距 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+/* 给所有元素加红色边框 */
+        /* outline: 1px solid red !important;  */
+
+            /* 其他样式... */
+
+}
+/* 页面基础样式 */
+
+
+
+
+
+
+/* 修复2：给动态元素添加加载占位 */
+[class*="active"] {
+    will-change: transform, opacity; /* 提示浏览器优化 */
+}
+
+
+
+/* 页面基础样式 */
+body {
+    background-color: #000000;
+    background: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+    text-align: center;
+    min-height: 100vh;
+    width: 100%;
+
+    padding: 0px 0px 0; /* 顶部留出header空间 */
+   
+    background-attachment: fixed;
+    background-size: cover;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    
+    overflow-x: hidden; /* 阻止水平滚动 */
+
+
+   
+}
+
+/* 给该该组件添加 隐藏效果 */
+/* .about-section, .news, .shop, .product, .about {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: var(--entrance-transition);
+} */
+/* 显示动画 */
+/* .active {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+    transition: 1.25s;
+  } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+.welcome {
+    width: 100%;
+    height: 66vh;
+
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+
+    animation: fadeZoomIn 0.6s ease-out; /* 应用动画，持续 1 秒 */
+}
+
+.welcome p {
+    font-size:clamp(30px,5vw,38px) ;
+    font-weight: bold;
+}
+
+
+/* 卡片容器 */
+.card-container1  {
+    display: flex ; /* 使用 Flex 布局 */
+
+    flex-wrap: wrap;/* 允许换行 */
+    justify-content:center;/* 居中 */
+    overflow-x: auto; /* 允许横向滚动 */
+    gap: 60px; /* 卡片之间的间距 */
+    padding: 20px; /* 添加内边距 */
+    width: 100%; /* 占满父容器宽度 */
+
+    box-sizing: border-box; /* 包括内边距在宽度计算内 */
+}
+
+
+
+
+
+
+
+
+
+
+  
+footer {
+    background-color: #727272;
+    color: #fff;
+
+    text-align: center;
+    border-top: 1px solid #5d5d5d;
+
+    display: flex;
+    justify-content:center;
+    align-items:flex-end;
+    width: 100%; /* 新增 */
+    height: 15vh;
+    box-sizing: border-box; /* 确保border计算在宽度内 */
+}
+
+
+
+.footer-content p {
+
+    margin: 5;
+    line-height: 1.5;
+    font-size: 14px;
+}
+.footer-content p1 {
+padding-bottom: 0px;
+font-weight: 700;
+margin: 50px;
+    font-size: 14px;
+}
+
+/* .footer-content a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+} */
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .parallel-group {
+        flex-direction: column;
+        gap: 1px;
+        
+    }
+    
+    .footer-content p1 {
+        margin: 0;
+        line-height: 2;
+        font-size: 10px;
+    }
+    
+}
+
+/* 其他样式保持原样 */
+
+

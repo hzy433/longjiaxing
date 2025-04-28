@@ -1,0 +1,278 @@
+
+
+
+
+
+
+
+
+
+
+
+
+.choice {
+    padding-top: 110px;
+    padding-left: clamp(0px,2vw,50px);
+    width: 100%;
+}
+
+.selector {
+    margin-bottom: 20px;
+    text-align: left;
+    width: 100%;
+}
+
+.options {
+margin-top: 20PX;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+}
+
+.option input {
+    margin-right: 5px;
+    accent-color: #0742f5; /* 将打钩的颜色设置为红色 */
+}
+
+/* 针对移动端的媒体查询 */
+@media (max-width: 768px) {
+    .options {
+        flex-wrap: wrap; /* 允许子元素换行 */
+        gap: 10px; /* 调整子元素之间的间距 */
+    }
+
+    .option {
+        flex: 1 1 calc(50% - 10px); /* 每行显示两个选项，减去间距 */
+        display: flex;
+        align-items: center;
+    }
+}
+
+.product-item {
+    display: block; /* 默认显示 */
+
+
+}
+
+.product-item.hidden {
+    display: none; /* 隐藏 */
+}
+
+
+.product-all {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));/* 自动适配  宽度最小350 最大1fr */
+    gap: 20px;
+
+    height: auto;
+    min-height: 1000px;
+    justify-items: center;
+    justify-content: center;
+    align-items: start;
+padding: 10px;
+}
+
+/* 添加媒体查询以在移动端调整为两列 */
+@media (max-width: 768px) {
+    .product-all {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+        gap: 10px; /* 减小间距 */
+    }
+
+}
+
+
+
+
+/* 单个产品卡片 */
+.product-all div {
+
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 100%; /* 让卡片宽度适应网格 */
+    height: auto;
+    padding: 10px;
+
+}
+
+/* 悬停提升效果 */
+.product-all div:hover {
+    transform: translateY(-15px);
+
+
+        border-color: #ff0000;
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);  /* 添加发光效果 */
+
+}
+.product-all .card:hover {
+    transform: none; /* 禁用上移效果 */
+    cursor: default; /* 改为默认鼠标样式 */
+}
+
+/* 产品图片 */
+.product-all img {
+    width: 100%;
+
+    border-radius: 10px;
+    aspect-ratio: 1/1; /* 保持正方形 */
+    object-fit: cover; /* 填充容器 */
+}
+
+/* 产品标题 */
+.product-all h3 {
+    font-size: clamp(18px, 2vw, 24px); /* 响应式字体 */
+top: auto;
+text-align: start;
+height: 60px;
+line-height: 1.2; /* 添加行间距 */
+padding-left: 0.5rem;
+    color: #333;
+}
+
+/* 产品描述 */
+.product-all p {
+
+text-align: start;
+text-overflow: ellipsis; /* 添加省略号 */
+height: clamp(70px, 1.6vw, 110px);
+padding-left: 0.5rem;
+padding-right: 0.5rem;
+    font-size: clamp(12px, 1.6vw, 14px);
+    font-weight: 500;
+    line-height: 1.6;
+    height: 150px;
+    color: #666;
+    margin-bottom: 20px;
+
+}
+
+
+.product-all .product-action {
+    display: inline-block;
+
+    cursor: pointer;
+    padding: clamp(10px, 2vw, 10px) clamp(15px, 5vw, 40px);
+    font-size: clamp(14px, 1.6vw, 20px);
+    text-wrap: nowrap;
+    margin: 0px 5px 20px; /* 上 左右 下 */
+    font-weight: bold;
+    line-height: 1.1;
+    color: #333;
+    background-color: #f5f5f5;
+    border-radius: 24px;
+    transition: all 0.3s ease;
+    border: 1px solid;
+border-color: #000;
+height: 40px;
+
+
+}
+
+/* 按钮悬停效果 */
+.product-all .product-action:hover {
+    background-color: #3a3a3a;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border: 1px solid;
+
+    color: white;
+}
+
+
+
+
+
+/* 去除默认蓝色样式 */
+.product-action a {
+
+    color: inherit; /* 继承父元素的颜色 */
+    text-decoration: none; /* 去掉下划线 */
+    font-weight: bold; /* 可选：设置字体加粗 */
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+    background-color: #727272;
+    color: #fff;
+
+    text-align: center;
+    border-top: 1px solid #5d5d5d;
+
+    display: flex;
+    justify-content:center;
+    align-items:flex-end;
+    width: 100%; /* 新增 */
+    height: 15vh;
+    box-sizing: border-box; /* 确保border计算在宽度内 */
+}
+
+
+
+.footer-content p {
+
+    margin: 5;
+    line-height: 1.5;
+    font-size: 14px;
+}
+.footer-content p1 {
+padding-bottom: 0px;
+font-weight: 700;
+margin: 50px;
+    font-size: 14px;
+}
+
+/* .footer-content a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+} */
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .parallel-group {
+        flex-direction: column;
+        gap: 1px;
+        
+    }
+    
+    .footer-content p1 {
+        margin: 0;
+        line-height: 2;
+        font-size: 10px;
+    }
+    
+}
+
+/* 其他样式保持原样 */

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- 确保 viewport 设置正确（防止默认缩放）： -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>龙嘉兴电子科技官网</title>
+    <link rel="stylesheet" href="/longjiaxing/style.css">
+    <link rel="stylesheet" href="/longjiaxing/product.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+
+
+
+
+<body>
+    <header>
+
+
+        
+
+        <h1>龙嘉兴电子科技</h1>
+
+        <label class="hamburger">
+            <input type="checkbox" class="checkbox">
+            <svg viewBox="0 0 32 32">
+              <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+              <path class="line" d="M7 16 27 16"></path>
+            </svg>
+          </label>
+          
+        <nav class="nav">
+
+            <a href="index.html#home" class="nav-item is-active" active-color="orange">首页</a>
+            
+            
+            <div class="nav-item dropdown" active-color="green">
+                <a href="index.html#about-section" class="nav-link">关于</a>
+                <div class="dropdown-buffer"></div> <!-- 缓冲区域 -->
+                <div class="dropdown-menu">
+                    <a href="index.html#about-section">公司简介</a>
+                    <a href="index.html">发展历程</a>
+                    <a href="index.html">企业文化</a>
+                </div>
+            </div>
+
+
+            <div class="nav-item dropdown" active-color="blue">
+                <a href="index.html#product" class="nav-link">产品</a>
+                <div class="dropdown-buffer"></div> <!-- 缓冲区域 -->
+                <div class="dropdown-menu">
+                    <a href="product.html">产品中心</a>
+                    <a href="product center.html">成品中心</a>
+                    <a href="#product3">产品手册2</a>
+                </div>
+            </div>
+
+
+            <div class="nav-item dropdown" active-color="red">
+                <a href="index.html#newsletter" class="nav-link">服务</a>
+                <div class="dropdown-buffer"></div> <!-- 缓冲区域 -->
+                <div class="dropdown-menu">
+                    <a href="index.html##newsletter">客户支持</a>
+                    <a href="index.html#newsletter">售后服务</a>
+                    <a href="index.html#newsletter">技术支持</a>
+                </div>
+            </div>
+
+
+
+            <div class="nav-item dropdown" active-color="rebeccapurple">
+                <a href="index.html#newsletter" class="nav-link">支持</a>
+                <div class="dropdown-buffer"></div> <!-- 缓冲区域 -->
+                <div class="dropdown-menu">
+                    <a href="index.html#newsletter">常见问题</a>
+                    <a href="index.html#newsletter">文档下载</a>
+                    <a href="index.html#newsletter">联系我们</a>
+                </div>
+            </div>
+
+
+
+            <span class="nav-indicator"></span>
+        </nav>
+    
+        <!-- 添加语言切换按钮和搜索图标 -->
+        <!-- <div class="header-actions">
+            <button class="language-switch">中文</button>
+            <button class="search-icon">
+                <i class="fas fa-search"></i>
+            </button>
+        </div> -->
+
+         
+           
+    </header>
+
+
+
+<main>
+
+
+<section class="choice">
+    <div class="selector">
+        <h2>选择类别：</h2>
+        <div class="options">
+            <div class="option">
+                <input type="checkbox" id="all" checked onchange="toggleAll(this)">
+                <label for="all">全部</label>
+            </div>
+
+            <div class="option">
+                <input type="checkbox" id="ZP" class="filter-checkbox" checked onchange="filterProducts()">
+                <label for="ZP">帐篷</label>
+            </div>
+
+            <div class="option">
+                <input type="checkbox" id="DSDDC" class="filter-checkbox" checked onchange="filterProducts()">
+                <label for="DSDDC">低速电动车</label>
+            </div>
+
+            <div class="option">
+                <input type="checkbox" id="TYNGF" class="filter-checkbox" checked onchange="filterProducts()">
+                <label for="TYNGF">太阳能光伏</label>
+            </div>
+
+            <div class="option">
+                <input type="checkbox" id="CNDY" class="filter-checkbox" checked onchange="filterProducts()">
+                <label for="CNDY">储能电源</label>
+            </div>
+
+            <div class="option">
+                <input type="checkbox" id="HWD" class="filter-checkbox" checked onchange="filterProducts()">
+                <label for="HWD">户外灯</label>
+            </div>
+
+
+            
+        </div>
+    </div>
+</section>
+
+<section class="product-all" id="product-all">
+
+    <div class="product-item" data-category="ZP">
+        <img src="images/CP/帐篷 鸿.png" alt="帐篷">
+        <h3>帐篷 鸿</h3>
+        <p>Tent weight: 6.7kg
+            <br>Tent structure: double layered tent
+            <br>Inner tent material: Mosquito proof mesh
+            <br>Unfolding size (length * width * height cm): 325 * 285 * 185
+        </p>
+
+        <p class="product-action">
+            <a href="files/帐篷 鸿.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>
+        </p>
+    </div>
+
+    
+
+    <div class="product-item" data-category="ZP">
+        <img src="images/CP/帐篷 筑观.png" alt="帐篷">
+        <h3>帐篷 筑观</h3>
+        <p>External materials: 210D Oxford cloth, waterproof level 4+ UV50+
+            <br>Account material: 210D Oxford cloth
+            <br>Net weight: 8.25kg
+            <br>Tent size: 218x132x115cm
+            
+            
+        </p>
+
+        <p class="product-action">
+            <a href="files/帐篷 筑观.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+
+<!-- 低速电动车类 -->
+    <div class="product-item" data-category="DSDDC">
+        <img src="images/CP/A8P.png" alt="低速电动车">
+        <h3>A8P</h3>
+        <p>Dimensions(mm):2545*1227*1610
+            <br>Body type:unitary body
+            <br>Body structure:2doors and 2seats
+            <br>Motor:60V3000W AC
+            <br>Controller:60V 24tubes
+        </p>
+
+        <p class="product-action">
+            <a href="files/A8P.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+    <div class="product-item" data-category="DSDDC">
+        <img src="images/CP/A900.png" alt="低速电动车">
+        <h3>A900</h3>
+        <p>Dimensions(mm):2810*1316*1509
+            <br>Body type:unitary body
+            <br>Body structure:4doors and 4seats
+            <br>Motor:72V3000W AC
+            <br>Controller:72V 24tubes
+        </p>
+
+        <p class="product-action">
+            <a href="files/A900.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+
+
+
+    <div class="product-item" data-category="DSDDC">
+        <img src="images/CP/A901.png" alt="低速电动车">
+        <h3>A901</h3>
+       <p>Dimensions(mm):2810*1316*1509
+            <br>Body type:unitary body
+            <br>Body structure:4doors and 4seats
+            <br>Motor:72V3000W AC
+            <br>Controller:72V 24tubes
+        </p>
+
+        <p class="product-action">
+            <a href="files/A901.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+    <div class="product-item" data-category="DSDDC">
+        <img src="images/CP/P100.png" alt="低速电动车">
+        <h3>P100</h3>
+        <p>Overall Dim(mm):2285*975*1048
+            <br>Front fork:ф31 hydraulic shocker
+            <br>Front/rear tire:3.0-10 tubeless tire
+            <br>Motor:60V1000W
+            <br>Controller:60V 18tubes
+        </p>
+
+        <p class="product-action">
+            <a href="files/P100.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+
+<!-- 太阳能光伏类 -->
+    <div class="product-item" data-category="TYNGF">
+        <img src="images/CP/200W SOLAR PANELS.png" alt="太阳能光伏">
+        <h3>200W SOLAR PANELS</h3>
+        <p>Size:2220x610x27mm(Unfold);<br>597*610*42mm (Fold)
+            <br>Instantaneous Voltage:24.48V
+            <br>Standard Operating Voltage:19.44V
+            <br>Standard Operating Current:10.802A
+            <br>Product Weight:5.3kgs
+        </p>
+        <p class="product-action">
+            <a href="files/200W SOLAR PANELS.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+    <div class="product-item" data-category="TYNGF">
+        <img src="images/CP/400W SOLAR PANELS.png" alt="太阳能光伏">
+        <h3>400W SOLAR PANELS</h3>
+        <p>Size:2338x930x27mm(Unfold): 590x930x50mm(Fold)
+            <br>Instantaneous Voltage:48.9V
+            <br>Standard Operating Voltage:40.3V
+            <br>Standard Operating Current:9.9A
+            <br>Product Weight:11.64kgs
+        </p>
+
+        <p class="product-action">
+            <a href="files/400W SOLAR PANELS.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+
+<!-- 储能电源类 -->
+    <div class="product-item" data-category="CNDY">
+        <img src="images/CP/B2000 EXPANSION BATTERY PACK.png" alt="储能电源">
+        <h3>B2000<br> EXPANSION BATTERY PACK</h3>
+        <p>Size:432*296*334mm
+            <br>Material:ABS + PC VO Fire-proof Material
+            <br>Battery:LMFP Or LFP
+            <br>Capacity:2047.5Wh or 2150.4Wh
+            <br>Single Cell Capacity:21Ah 
+            <br>Product Weight:24.35 kgs
+        </p>
+
+        <p class="product-action">
+            <a href="files/B2000 EXPANSION BATTERY PACK.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+    
+    <div class="product-item" data-category="CNDY">
+        <img src="images/CP/B3000 EXPANSION BATTERY PACK.png" alt="储能电源">
+        <h3>B3000<br> EXPANSION BATTERY PACK</h3>
+        <p>Size:432*296*334mm
+            <br>Material:ABS + PC VO Fire-proof Material
+            <br>Battery:LMFP Or LFP
+            <br>Capacity:3071.25Wh or 3255.6Wh
+            <br>Single Cell Capacity:21Ah 
+            <br>Product Weight:33kgs
+        </p>
+        <p class="product-action">
+            <a href="files/B3000 EXPANSION BATTERY PACK.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+
+
+<!-- 户外灯类 -->
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/Mini Lantern.png" alt="户外灯">
+        <h3>Mini Lantern</h3>
+        <p>Luminous flux (lumens):10/150/350
+            <br>Run time (hrs):10/150/350lumes:35/5/2.5
+            <br>Red light wavelength (nm):620-640
+            <br>Chromatic temperature (K):5500-6500
+            <br>Battery:3.7V/800mAh Li-ion
+        </p>
+
+        <p class="product-action">
+            <a href="files/Mini Lantern.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/F2209B0 SPIRIT LIGHT.png" alt="户外灯">
+        <h3>F2209B0<br> SPIRIT LIGHT</h3>
+        <p>Luminous flux (lumens):Main:650/300-Auxiliary:350-Spot:50
+            <br>RGB light wavelength (nm):R:620-640 G:520-540 B:435-480
+            <br>Chromatic temperature (K):Main:5500-6500
+            <br>Battery:3.7V/1100mAh Li-ion
+        </p>
+
+        <p class="product-action">
+            <a href="files/F2209B0 SPIRIT LIGHT.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/F2207A0 HEAD LIGHT.png" alt="户外灯">
+        <h3>F2207A0<br> HEAD LIGHT</h3>
+        <p>Luminous flux (lumens):10/150/350
+            <br>Run time (hrs):10/150/350lumes:35/5/2.5
+            <br>Red light wavelength (nm):620-640
+            <br>Chromatic temperature (K):5500-6500
+            <br>Battery:3.7V/800mAh Li-ion
+
+        </p>
+
+        <p class="product-action">
+            <a href="files/F2207A0 HEAD LIGHT.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+
+
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/FHO2-A00 HEAD LIGHT.png" alt="户外灯">
+        <h3>FHO2-A00<br> HEAD LIGHT</h3>
+        <p>Luminous flux (lumens):Boost 500/300/120/20
+            <br>Run time (hrs):20/120/300/500 lumens:36/6/3/1.5
+            <br>RGB light wavelength (nm):R:620-640 G:520-540 B:435-480
+
+
+        </p>
+
+        <p class="product-action">
+            <a href="files/FHO2-A00 HEAD LIGHT.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/FHO3-A00 HEAD LIGHT.png" alt="户外灯">
+        <h3>FHO3-A00<br> HEAD LIGHT</h3>
+        <p>Luminous flux (lumens):500(x2)/300(x1)/50(x1)
+            <br>Run time (hrs):50/300/500 lumens: 36/3/1.5
+            <br>Chromatic temperature (K):5700-6500
+            <br>Battery:14650-1100mAh Li-ion
+
+
+        </p>
+
+        <p class="product-action">
+            <a href="files/FHO3-A00 HEAD LIGHT.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/F2101A1 PEN LIGHT.png" alt="户外灯">
+        <h3>F2101A1<br> PEN LIGHT</h3>
+        <p>Luminous flux (lumens)
+            <br>Run time (hrs):50/20-200
+            <br>Chromatic temperature (K):6000
+            <br>Battery:3.7V/600mAh Li-ion
+     
+
+        </p>
+
+        <p class="product-action">
+            <a href="files/F2101A1 PEN LIGHT.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+
+
+    <div class="product-item" data-category="HWD">
+        <img src="images/CP/灭蚊灯 DX60插电款.png" alt="灭蚊灯">
+        <h3>灭蚊灯 DX60插电款</h3>
+        <p>Specification: 64.5 * 3.5 * 39cm
+            <br>Specifications: 64.5*3.5*39cm
+            <br>Rated voltage: 220V/50Hz
+            <br>Rated power: 10W
+            <br>Output high voltage: 2500-3500V
+            <br>Power cord length: 3 meters
+
+        </p>
+
+        <p class="product-action">
+            <a href="files/灭蚊灯 DX60插电款.pdf" download=>了解更多</a>
+        </p>
+
+        <p class="product-action">
+            <a href="#" class="buy-now">立即购买</a>  <!-- 添加 buy-now 类 -->
+        </p>
+    </div>
+
+</section>
+
+
+
+<section>
+
+
+    <div class="about" id="about">
+        
+
+        <!-- <div>
+            <h3>在线查找供应商</h3>
+            <p>浏览产品类别</p>
+            <p>浏览供应商类别</p>
+            <p>批发目录</p>
+            <p>新产品推出</p>
+
+        </div> -->
+
+
+
+        <div>
+            <h3>供应商工具</h3>
+            <p class="clickable" id="contact-link-parent"><a href="#" id="contact-link">成为供应商</a></p>
+            <p>认证供应商</p>
+            <p>销售您的产品</p>
+            <p>销售您的产品</p>
+
+        </div>
+
+
+        <div>
+            <h3>帮助中心</h3>
+            <p>购前须知</p>
+            <p>购买指南</p>
+            <p>技术支持</p>
+            <p>咨询采购专家</p>
+
+        </div>
+
+
+         <div class="aboutUS" id="aboutUS">
+            <div>
+                <h3>关于我们</h3>
+                <p class="clickable" id="contact-link-parent"><a href="#" id="contact-link">联系我们</a></p>
+                <p class="clickable" id="contact-link2-parent"><a href="#about-section" id="contact-link2">关于龙嘉兴</a></p>
+                <p class="clickable" id="contact-link3-parent"><a href="#shop" id="contact-link3">我们的服务</a></p>
+                <p class="clickable" id="contact-link4-parent"><a href="#" id="contact-link4">加入我们</a></p>
+            </div>
+         </div>
+    </div>
+
+    <div class="contact">
+        <div id="contact-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>联系我们</h2>
+                <p><strong>电话：</strong>(86)-191-5623-6603</p>
+                <p><strong>邮箱：</strong>gracelingyao@126.com</p>
+                <p><strong>地址：</strong>厦门市集美区天阳路20号悠度工业园第三层318单元</p>
+            </div>
+        </div>
+    </div>  
+
+
+  
+</section>
+
+
+
+
+</main>
+
+<script src="/longjiaxing/script.js" defer></script>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<footer>
+    <div class="footer-content">
+        <p><strong>供应商服务热线</strong></p>
+    <p><strong>中国大陆：(86)-191-5623-6603</strong></p>
+    <!-- <p><strong>香港：(852)188-88888</strong></p> -->
+
+        
+        <!-- <p>
+            <a href="#">使用条款</a>
+            <a href="#">隐私策略</a>
+            <a href="#">安全措施</a>
+            <a href="#">IP策略</a>
+            <a href="#">Cookie政策</a>
+        </p> -->
+        
+        <p1>版权所有 © 2025 厦门龙嘉兴新能源科技有限公司 保留所有权利。</p1>
+    </div>
+</footer>
+</html>

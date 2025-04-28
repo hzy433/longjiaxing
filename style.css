@@ -1,0 +1,2205 @@
+
+@import url('https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+
+
+/* 全局重置样式 - 去除所有元素的默认边距和内边距 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+/* 给所有元素加红色边框 */
+        /* outline: 1px solid red !important;  */
+
+            /* 其他样式... */
+
+}
+/* 页面基础样式 */
+
+html{
+    scroll-behavior: smooth; 
+}
+
+
+
+
+/* 修复2：给动态元素添加加载占位 */
+[class*="active"] {
+    will-change: transform, opacity; /* 提示浏览器优化 */
+}
+
+
+
+/* 页面基础样式 */
+body {
+    background-color: #000000;
+    background: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+    text-align: center;
+    min-height: 100vh;
+    width: 100%;
+
+    padding: 0px 0px 0; /* 顶部留出header空间 */
+   
+    background-attachment: fixed;
+    background-size: cover;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    
+    overflow-x: hidden; /* 阻止水平滚动 */
+
+
+   
+}
+
+/* 给该该组件添加 隐藏效果 */
+/* .about-section, .news, .shop, .product, .about {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: var(--entrance-transition);
+} */
+/* 显示动画 */
+/* .active {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+    transition: 1.25s;
+  } */
+
+
+/* 添加id器 隐藏效果 */
+  .about-header, .card-container, .more-btn,.about-description, .about-image, .card, .title, .card1, .img,.flash, .product-action, .product2-action, .div2 {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: var(--entrance-transition);
+}
+
+
+.active {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+    transition: 1.25s;
+  }
+
+
+
+
+
+
+
+header {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    height: clamp(60px,70px,95px);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    padding: 0 20px;
+    /* 阻止水平滚动 */
+    /* 阻止水平滚动 */
+    /* overflow-x: hidden; 
+    overflow-y: hidden;  */
+    
+}
+header h1 {
+
+margin-left: -70px;
+background-size: 200px;
+}
+
+
+header a {
+    color:white;
+    text-decoration: none;
+}
+
+/* 仅作用于主菜单的链接 */
+header a:not(.dropdown-menu a)::before {
+    will-change: transform; /* 提示浏览器优化 */
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    height: 4px;
+    background-color: #0414ff;
+    border-radius: 12px;
+    transform: scaleX(0);
+    transform-origin: right; /* 固定为 left */
+    transition: transform 0.2s ease-in-out;
+}
+
+/* 鼠标悬停时的动画效果 */
+header a:not(.dropdown-menu a):hover::before {
+    transform: scaleX(1);
+    width: 100%;
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out; /* 确保动画一致 */
+}
+
+/* 防止动画被中断 */
+header a:not(.dropdown-menu a)::before {
+    pointer-events: none;
+}
+
+
+
+
+
+/* 子菜单容器样式 */
+.dropdown-menu {
+    display: none; /* 默认隐藏 */
+    position: absolute;
+    top: 140%; /* 根据需要调整位置 */
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 1000; /* 确保子菜单在最上层 */
+    text-align: left;
+}
+
+/* 子菜单链接的基础样式 */
+.dropdown-menu a {
+    position: relative; /* 为伪元素提供定位上下文 */
+    display: block; /* 子菜单竖直排列 */
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px 20px;
+    transition: color 0.3s ease, background-color 0.3s ease; /* 添加颜色和背景过渡 */
+}
+
+/* 子菜单链接的下划线动画 */
+.dropdown-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* 位于文字底部 */
+    left: 0;
+    width: 0; /* 初始宽度为 0 */
+    height: 2px; /* 下划线高度 */
+    background-color: #0414ff; /* 下划线颜色 */
+    transition: width 0.3s ease; /* 添加宽度过渡动画 */
+}
+
+/* 鼠标悬停时触发下划线动画 */
+.dropdown-menu a:hover::after {
+    width: 100%; /* 下划线扩展到整个文字宽度 */
+}
+
+/* 鼠标悬停时改变文字颜色和背景 */
+.dropdown-menu a:hover {
+    color: #0414ff; /* 改变文字颜色 */
+    background-color: #f0f0f0; /* 改变背景颜色 */
+}
+
+
+
+/* 鼠标悬停时显示子菜单 */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+
+/* 缓冲区域样式 */
+.dropdown-buffer {
+    position: absolute;
+    top: 100%; /* 紧贴父菜单底部 */
+    left: 0;
+    width: 100%;
+    height: 20px; /* 缓冲区域高度 */
+    background: transparent; /* 透明背景 */
+    pointer-events: auto; /* 确保缓冲区域可以接收鼠标事件 */
+}
+
+
+
+/* 主导航样式 */
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1px, 5vw, 100px);
+    width: 100%;
+    height: 7vh;
+    position: relative;
+    padding: 0 10px;
+}
+
+/* 主导航链接样式 */
+.nav-item {
+    position: relative;
+    color: #535353;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(5px, 4.5vw, 20px);
+    text-align: center;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+left: 50px;
+}
+
+/* 主导航链接的颜色 */
+.nav-link {
+    color: #4b4a4a;
+}
+
+/* 侧边导航栏 */
+@media (max-width: 970px) {
+    h1 {
+        background-size: 60%; /* 调整背景大小 */
+        left: 0; /* 使用 left 替代 margin */
+        left: -70px;
+        margin: 0; /* 移除 margin */
+        width: 400px;
+
+    }
+
+    .nav {
+        opacity: 0;
+        position: absolute;
+        right: -80px; /* 根据 logo 宽度调整 */
+        top: 100px;
+        white-space: nowrap; /* 防止换行 */
+        -webkit-overflow-scrolling: touch; /* 平滑滚动 */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 20%;
+        height: auto;
+            transition: all 0.3s ease-out; /* 添加过渡效果 */
+        transform: scaleX(100%);
+        background-color: #ffffff;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* 柔和阴影 */
+        border-radius: 6px;
+
+    }
+
+    .nav-item {
+
+        display: flex;
+margin-top: 5px;
+        align-items: center; /* 垂直居中 */
+        justify-content: center; /* 水平居中 */
+        padding: 5px 0; /* 添加垂直内边距 */
+        color: #535353;
+        text-decoration: none;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 700;
+        font-size: clamp(5px, 4.5vw, 25px);
+        background-color: transparent;
+        left: 0px;
+    }
+
+
+
+    .language-switch {
+        margin-left: 0;
+        padding: 8px 12px;
+    }
+
+
+    /* 子菜单容器样式 */
+.dropdown-menu {
+    display: none; /* 默认隐藏 */
+    position: absolute;
+    top: 140%; /* 根据需要调整位置 */
+    left: -30px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 1000; /* 确保子菜单在最上层 */
+    text-align: left;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Logo样式 */
+  h1 {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    left: 30px;
+
+
+    background: url(images/Logo.png) no-repeat center;
+    background-size:contain;
+
+    width: 300px;
+    height:100%;
+    text-indent: -9999px;
+}/* 媒体查询：当屏幕宽度 <= 970px 时 */
+
+
+/* 禁用移动端动画 */
+@media (max-width: 768px) {
+    header a::before {
+        content: none; /* 移除伪元素 */
+    }
+    .header {
+        top: 150px;
+        height: 20px;
+        width: 10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*       <!-- 添加语言切换按钮和搜索图标 --> */
+.header-actions {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right:1%;
+    width: 100px;
+    height: 30px;
+    background-color: transparent; /* 新增 */
+    margin-top: 4px;
+}
+/* 字体大小 */
+.language-switch {
+    border: none;
+    text-align: end;
+    cursor: pointer;
+    padding: clamp(10px, 1vw, 20px) clamp(5px, 1, 45px);
+    font-size: clamp(16px, 2vw, 25px);
+    color: #535353;
+    font-weight: 700;
+
+    background-color: transparent; /* 新增 */
+}
+
+.search-icon {
+    background: transparent; /* 修改 */
+    left: 0.5vw;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    bottom: 0px;
+}
+  
+
+
+
+
+/* 基础动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+
+/* 来源：Uiverse.io 作者：JulanDeAlb */
+/* 汉堡菜单样式 */
+.hamburger {
+    opacity: 0;/* 全屏隐藏 */
+    cursor: pointer; /* 鼠标悬停时显示手型指针 */
+position: absolute;
+right: 20px;
+z-index: 0;
+
+    
+}
+
+
+.hamburger input {
+    display: none; /* 隐藏复选框 */
+}
+
+.hamburger svg {
+    /* SVG 的尺寸定义整体大小 */
+    height: 3em; /* 设置 SVG 的高度 */
+    /* 定义 SVG 的旋转动画 */
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1); /* 平滑过渡 */
+}
+
+.line {
+    fill: none; /* 无填充色 */
+    stroke: rgb(62, 62, 62); /* 线条颜色为白色 */
+    stroke-linecap: round; /* 线条末端为圆角 */
+    stroke-linejoin: round; /* 线条连接处为圆角 */
+    stroke-width: 3; /* 线条宽度为3px */
+    /* 定义线条的动画过渡效果 */
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+    stroke-dasharray: 12 63; /* 定义虚线的间隔 */
+}
+
+.hamburger input:checked + svg {
+    transform: rotate(-45deg); /* 选中时旋转 -45 度 */
+
+}
+
+
+.hamburger input:checked + svg .line-top-bottom {
+    stroke-dasharray: 20 300; /* 改变虚线间隔 */
+    stroke-dashoffset: -32.42; /* 偏移虚线的位置 */
+}
+
+
+
+  /* 响应式调整 */
+  @media (max-width: 950px) {
+    .hamburger{
+        z-index: 999;
+        opacity: 1;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 首页 */
+
+/* 定义动画 */
+@keyframes scaleDown {
+    0% {
+        transform: scale(1.2);
+        overflow: hidden; /* 初始状态隐藏溢出 */
+    }
+    100% {
+        transform: scale(1);
+        overflow: overflow; /* 或保持 hidden */
+    }
+}
+
+.background home{
+    width: 100%;
+    max-width: 1400px;
+    height: 66vh;
+}
+
+
+/* 应用动画到首页 .home */
+.home {
+    opacity: 0;
+    animation: fadeInUp 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards, 
+               scaleDown 1.2s ease forwards; /* 添加缩放动画 */
+    background-color: rgb(255, 255, 255);
+    color: white;
+    width: 100%; /* 用100%替代100vw */
+    box-sizing: border-box; /* 包含padding在宽度内 */
+    height: 100vh;
+    background-image: url("images/banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+
+
+
+/* 龙嘉兴官网 */
+.home h2 {
+
+    font-size: clamp(4rem, 10vw, 8rem);
+    margin-top:-100px;
+    color: #ffffff;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.3s;
+} 
+.home p {
+    color:#f0f0f0;
+
+    font-size: clamp(18px, 1vw, 24px);
+    font-weight: 600;
+    margin:25px 0;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.6s;
+}
+.home a {
+    color:white;
+    text-decoration: none;
+    border: 1px solid #ACACAC;
+    padding:10px 20px;
+    border-radius: 5px;
+}
+.home #container {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.9s;
+}
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+    .home{
+        height: 810px;
+    }
+    .home h2{
+
+        margin-top: -100px;
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+/* 按钮基础样式 */
+button {
+    position: relative;     /* 相对定位 */
+    display: inline-block;  /* 行内块元素 */
+    cursor: pointer;       /* 鼠标悬停时显示手型指针 */
+    outline: none;         /* 去除焦点轮廓线 */
+    border: 0;            /* 无边框 */
+    font-size: 1.5rem;     /* 字体大小(约19.2px) */
+    text-decoration: none; /* 去除文本装饰 */
+    background: transparent; /* 透明背景 */
+    margin-left: 0;
+
+
+}
+
+/* 特定类名按钮样式 */
+button.learn-more {
+    width: 12rem;          /* 固定宽度(约160px) */
+    height: auto;
+       /* 高度自适应 */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+/* 圆形背景元素样式 */
+button.learn-more .circle {
+    position: relative;    /* 相对定位 */
+    display: block;        /* 块级元素 */
+    width: 3rem;          /* 初始宽度(约48px) */
+    height: 3rem;         /* 高度(约48px) */
+    background: #ffffff;  /* 深蓝色背景 */
+    border-radius: 1.5rem; /* 完全圆形(半径设为高度一半) */
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* 所有属性过渡动画 */
+
+
+    margin-right: auto; /* 使圆形靠左 */
+
+}
+
+/* 箭头图标样式(使用伪元素创建) */
+button.learn-more .circle .icon.arrow::before {
+    position: absolute;    /* 绝对定位 */
+    content: "";           /* 伪元素必需属性 */
+    top: 1.1rem;          /* 向上偏移(约-4.8px) */
+    right: 1.2rem;      /* 向右偏移(约1px) */
+    width: 0.625rem;       /* 宽度(约10px) */
+    height: 0.625rem;      /* 高度(约10px) */
+    border-top: 0.225rem solid #272727; /* 上边框(创建箭头的一部分) */
+    border-right: 0.225rem solid #272727; /* 右边框(创建箭头的一部分) */
+    transform: rotate(45deg); /* 旋转45度形成箭头 */
+}
+
+/* 按钮文本样式 */
+button.learn-more .button-text {
+    position: absolute;    /* 绝对定位 */
+    top:8px;             /* 轻微上移 */
+    left: 15px;               /* 左对齐 */
+    right: 0;              /* 右对齐 */
+    bottom: 0;             /* 底对齐 */
+
+
+    color: #ffffff;        /* 文本颜色 */
+    font-weight: 700;      /* 加粗字体 */
+    line-height: 1.6;      /* 行高 */
+    text-align: center;    /* 文本居中 */
+    font-size: 24px;
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* 过渡动画 */
+}
+
+/* 悬停状态下的圆形样式 */
+/* 修正悬停状态 */
+button:hover .circle {
+    width: 100%; /* 改为100%而不是125% */
+}
+
+/* 悬停状态下的箭头样式 */
+button:hover .circle .icon.arrow {
+    background: #fff;     /* 背景变白色 */
+    transform: translate(1rem, 0); /* 向右移动(约16px) */
+}
+
+/* 悬停状态下的文本样式 */
+button:hover .button-text {
+    color: #4c4c4c;          /* 文本变白色 */
+    font-size: 24px;
+    font-weight: 700px;
+}
+
+
+/* 移动端响应式按钮 (max-width: 768px) */
+@media (max-width: 768px) {
+    /* 基础按钮调整 */
+    button {
+      font-size: 1.2rem; /* 减小字体大小 */
+      margin-left: 0; /* 移除负边距 */
+    }
+  
+    /* 特定按钮调整 */
+    button.learn-more {
+      width: 8rem; /* 缩小按钮宽度 */
+      height: 2.8rem; /* 固定高度 */
+    }
+  
+    /* 圆形背景调整 */
+    button.learn-more .circle {
+      width: 2.5rem; /* 缩小圆形 */
+      height: 2.5rem;
+      border-radius: 1.25rem;
+      margin-top:0.4px;
+      margin-left: 0;
+      
+    }
+  
+    /* 箭头图标调整 */
+    button.learn-more .circle .icon.arrow::before {
+      top: 13px;
+      right: 1rem;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-width: 0.15rem; /* 减细箭头 */
+    }
+  
+    /* 按钮文本调整 */
+    button.learn-more .button-text {
+      top: 1px;
+      margin-left: 1rem; /* 调整文本位置 */
+      font-size: 1rem; /* 减小字体 */
+      padding: 0.5rem 0;
+    }
+  
+    /* 悬停状态调整 */
+    button:hover .circle {
+      width: 110%; /* 减小扩展幅度 */
+    }
+  
+    button:hover .circle .icon.arrow {
+      transform: translate(0.8rem, 0); /* 减小移动距离 */
+    }
+  }
+
+
+
+
+
+/* ============================================= */
+/* 关于我们区块 - 响应式布局 */
+/* ============================================= */
+
+/* 主容器设置：占据视窗高度的2/3，渐变背景，顶部对齐 */
+.about-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%); /* 浅灰色渐变背景 */
+    min-height: 66.67vh; /* 占据视窗高度的2/3 */
+    display: flex;
+    align-items: flex-start; /* 内容顶部对齐（原为center） */
+    position: relative;
+    padding: clamp(30px, 5vw, 60px) 0; /* 响应式上下内边距 */
+    border-bottom: 1px solid rgba(0,0,0,0.1); /* 底部浅色分割线 */
+justify-content:center;
+align-items: center;
+
+
+}
+
+
+
+/* 内容网格容器：限制最大宽度，使用网格布局 */
+.about-content {
+    width: 90%;
+height: 66vh;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 保持两列布局 */
+    gap: 60px;
+
+}
+
+/* ============================================= */
+/* 文字内容区域样式 */
+/* ============================================= */
+
+/* 文字容器：左侧对齐，宽度60% */
+.about-text {
+
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    width: clamp( 200px,50vw, 1600px); /* 占据父容器60%宽度 */
+height:clamp(10vh,50vh,66vh);
+    align-self: flex-start; /* 自身顶部对齐 */
+    padding-right: 80px; /* 文字右侧内边距 */
+    order: 1; /* 确保文本在第一列 */
+}
+
+/* 标题区域：双语标题布局 */
+.about-header {
+    line-height: 1.4;
+    text-align: left;
+    margin: 0; /* 清除默认外边距 */
+
+}
+
+
+/* 英文标题样式 */
+.about-header .en {
+    font-size: clamp(24px,5vw,36px);
+    letter-spacing: 1px; /* 字符间距 */
+    font-weight: 700; /* 加粗 */
+    color: #2d2d2d;
+    margin: 0; /* 清除默认外边距 */
+
+}
+
+/* 中文副标题样式 */
+.about-header .cn {
+    font-size: 20px;
+    display: block; /* 独占一行 */
+    margin: 3px 0 0 0; /* 仅上方有3px间距 */
+    font-weight: 600; /* 半粗 */
+    padding-top: 10px;
+    width: 100%; /* 设置标题的宽度 */
+    color: #2d2d2d;
+    border-bottom: 1px  solid #5d5d5d ; /* 添加装饰线 */
+}
+
+/* 描述文本段落样式 */
+.about-description{
+position: relative;
+top: clamp(10px,5vw,40px);
+
+
+}
+.about-description p1 {
+    position: relative;
+    font-size: clamp(10px, 4vw, 24px); /* 响应式字体大小 */
+    line-height: 2; /* 双倍行高 */
+    font-weight: 650; /* 常规粗细 */
+    color: #4e4e4e; /* 深蓝灰色 */
+
+
+
+}
+.about-description p {
+    position: relative;
+    font-size: clamp(10px, 1vw, 20px); /* 响应式字体大小 */
+    line-height: 2; /* 双倍行高 */
+    font-weight: 600; /* 常规粗细 */
+    color: #7c7c7c; /* 深蓝灰色 */
+    margin: 20px 0 0 0; /* 顶部20px间距，其他方向无 */
+    width: 100%;
+
+}
+
+/* 统计数据文本样式 */
+.about-stats p {
+    font-size: clamp(15px, 1.5vw, 17px); /* 响应式字体大小 */
+    color: #7f8c8d; /* 中灰色 */
+    font-weight: 500; /* 中等粗细 */
+    max-width: 190%; /* 允许超出容器宽度 */
+    margin: 0; /* 清除默认外边距 */
+}
+
+/* ============================================= */
+/* 图片区域样式（保留悬停效果） */
+/* ============================================= */
+
+/* 图片容器：圆角+阴影+溢出隐藏 */
+.about-image {
+    order: 2; /* 将图片放到第二列 */
+    justify-self: end; /* 在网格单元内右对齐 */
+    width: 80%;
+    height: 90%;
+
+    min-height: 100px; /* 最小高度防止折叠 */
+    border-radius: 8px; /* 圆角 */
+background-color: #040d86;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* 柔和阴影 */
+    transition: transform 0.3s ease; /* 添加变换动画 */
+}
+
+/* 图片本身：填充容器并保持比例 */
+.about-image img {
+    
+
+    width: 100%;
+    height: 80%;
+    object-fit: cover; /* 保持比例填充容器 */
+    overflow:visible;
+    transition: transform 0.5s ease; /* 缩放动画 */
+}
+
+/* ============================================= */
+/* 交互效果（保留原有效果） */
+/* ============================================= */
+
+/* 悬停时整体轻微上移 */
+.about-image:hover {
+    transform: translateY(-5px); /* 原代码为0px，调整为-5px更明显 */
+
+}
+
+/* 悬停时图片轻微放大 */
+.about-image:hover img {
+    transform: scale(1.05); /* 放大5% */
+}
+/* 移动端响应式调整 */
+@media (max-width: 767px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+            "text"
+            "image";
+        gap: 30px; /* 适当减小移动端的间距 */
+        height: auto; /* 移除固定高度 */
+        min-height: 10vh; /* 确保足够高度 */
+    }
+    
+    .about-text {
+        grid-area: text;
+        height: 35vh;
+        width: 100%; /* 移动端填满宽度 */
+        padding-right: 0; /* 移除右侧内边距 */
+    }
+    
+    .about-image {
+        grid-area: image;
+        order: initial;
+        justify-self: center;
+        width: 100%;
+        height: 80%; /* 高度自适应 */
+        max-width: 500px; /* 限制最大宽度 */
+        margin: 10px auto 0; /* 上间距30px，水平居中 */
+    }
+    
+    .about-description {
+        top: 0; /* 移动端取消偏移 */
+    }
+}
+
+
+
+
+
+
+/* 新闻中心 */
+
+  .news {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%); /* 浅灰色渐变背景 */
+    min-height: 66.67vh; /* 占据视窗高度的2/3 */
+    display: flex;
+    align-items: flex-start; /* 内容顶部对齐（原为center） */
+    position: relative;
+    padding: clamp(30px, 2vw, 60px) 0; /* 响应式上下内边距 */
+    border-bottom: 1px solid rgba(0,0,0,0.1); /* 底部浅色分割线 */
+justify-content: center;
+align-items: center;
+
+}
+
+
+
+
+
+.news-text{
+
+width: 90%;
+
+text-align: left;
+    display: grid;
+    grid-template-columns: 1fr; /* 单列布局（移动端优先） */
+    gap: 30px; /* 网格项间距 */
+
+    align-items: flex-start; /* 网格项顶部对齐 */
+
+}
+
+/* 卡片容器 */
+.card-container  {
+    display: flex ; /* 使用 Flex 布局 */
+
+    flex-wrap: wrap;/* 允许换行 */
+    justify-content:flex-start;/* 靠左 */
+    overflow-x: auto; /* 允许横向滚动 */
+    gap: 40px; /* 卡片之间的间距 */
+    will-change: transform; /* 提示浏览器优化 */
+    overflow: visible; /* 确保子元素不会被裁剪 */
+    width: 100%; /* 占满父容器宽度 */
+    height: auto;
+    box-sizing: border-box; /* 包括内边距在宽度计算内 */
+}
+
+/* 单个卡片 */
+.card {
+    flex: 0 0 260px; /* 固定卡片宽度为 220px */
+    height: 350px;
+    background: white;
+    padding: 0.4em;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative; /* 确保定位有效 */
+
+}
+
+/* 悬停效果 */
+.card:hover {
+    transform: translateY(-20px); /* 悬停时轻微上移 */
+    cursor:pointer;
+    transition: transform 0.3s ease;
+}
+
+/* 卡片图片 */
+.card-image {
+    background-color: rgb(236, 236, 236);
+    background-image: url(images/ym/叠层高分子固态电容.png);
+    width: 100%;
+    height: 130px;
+    border-radius: 6px 6px 0 0;
+}
+.card-image2 {
+    background-color: rgb(236, 236, 236);
+    background-image: url(images/ym/叠层高分子固态电容.png);
+    width: 100%;
+    height: 130px;
+    border-radius: 6px 6px 0 0;
+}
+.card-image3 {
+    background-color: rgb(236, 236, 236);
+    background-image: url(images/ym/叠层高分子固态电容.png);
+    width: 100%;
+    height: 130px;
+    border-radius: 6px 6px 0 0;
+}
+.card-image4 {
+    background-color: rgb(236, 236, 236);
+    background-image: url(images/ym/叠层高分子固态电容.png);
+    width: 100%;
+    height: 130px;
+    border-radius: 6px 6px 0 0;
+}
+.card-image5 {
+    background-color: rgb(236, 236, 236);
+    background-image: url(images/ym/叠层高分子固态电容.png);
+    width: 100%;
+    height: 130px;
+    border-radius: 6px 6px 0 0;
+}
+
+/* 卡片分类 */
+.category {
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: 600;
+    color: rgb(63, 121, 230);
+    padding: 10px 7px 5px;
+    border-bottom: 2px solid #a1a1a1 ; /* 添加装饰线 */
+    
+}
+
+/* 文本 */
+.heading {
+    font-weight: 600;
+    height: 100px;
+    color: rgb(147, 147, 147);
+    padding: 7px;
+
+    font-size: 14px;
+
+
+}
+
+/* 作者信息 */
+
+.author {
+    position: absolute;
+    color: rgb(88, 88, 88);
+    font-weight: 700;
+    font-size: 11px;
+bottom: 5px;
+}
+.name{
+    color: gray;
+    font-weight: 400;
+}
+
+
+@media (max-width: 768px) {
+
+    .card-container {
+        justify-content:center;/* 靠左 */
+        gap: 15px;
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 动画定义 */
+@keyframes slideFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+/* 基础动画定义 */
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); }
+  to { transform: scale(1); }
+}
+
+
+
+/* 响应式shop容器 */
+.shop {
+    display: flex;
+    flex-direction: row; /* 默认横向排列 */
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    width: 100%;
+    min-height: 50vh; /* 最小高度为视窗高度的一半 */
+        /* 响应式调整 */
+
+@media (max-width: 768px) {
+            flex-direction: column; /* 小屏幕改为纵向排列 */
+            min-height: auto;
+          }
+
+  }
+
+
+
+  /* 图片容器 */
+  .shop img {
+    width: 50%; /* 默认占一半宽度 */
+    height: auto;
+    object-fit: cover; /* 保持图片比例 */
+    
+    @media (max-width: 768px) {
+      width: 100%; /* 小屏幕全宽 */
+    }
+  }
+  
+  /* 信息容器 */
+  .info {
+    width: 50%;
+    padding: 5%; /* 使用百分比内边距 */
+    background: linear-gradient(135deg, #f5f7fa 0%, #9ed5ff 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* 确保padding不影响宽度计算 */
+    
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 60px 20px;
+    }
+  }
+  
+  /* 响应式文本文字 */
+  .info h2 {
+    font-size: clamp(25px, 4vw, 38px); /* 响应式字体大小 */
+    margin-bottom: 2vh; /* 使用视窗单位 */
+    text-align: center;
+    font-weight: 700;
+  }
+  
+  .info p {
+    text-align: center;
+    line-height: 1.6; /* 合理的行高 */
+    font-size: clamp(16px, 2vw, 20px); /* 响应式字体 */
+    padding: 0 10%;
+    font-weight: 600;
+    color: #535353;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+/* 产品区域容器 */
+.product {
+    display: grid; /* 改为grid布局 */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 最小宽度350自动适配列数 */
+    gap: 40px; /* 网格间距 */
+    max-width: 100%;
+    height: auto;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    justify-items: center; /* 水平居中对齐 */
+    align-items: start; /* 垂直顶部对齐 */
+    padding: clamp(120px, 12vw, 160px) clamp(20px, 7vw, 80px) clamp(20px, 5vw, 40px); /* 调整底部padding */
+
+    position: relative; /* 必须添加定位上下文 */
+}
+
+/* 单个产品卡片 */
+.product div {
+    padding: 10px;
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 100%; /* 让卡片宽度适应网格 */
+    max-width: 400px; /* 限制最大宽度 */
+    height: auto;
+}
+
+/* 悬停提升效果 */
+.product div:hover {
+    transform: translateY(-15px);
+
+
+        border-color: #ff0000;
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);  /* 添加发光效果 */
+
+}
+.product .card:hover {
+    transform: none; /* 禁用上移效果 */
+    cursor: default; /* 改为默认鼠标样式 */
+}
+
+/* 产品图片 */
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    aspect-ratio: 1/1; /* 保持正方形 */
+    object-fit: cover; /* 填充容器 */
+}
+
+/* 产品标题 */
+.product h3 {
+    font-size: clamp(24px, 2vw, 24px); /* 响应式字体 */
+top: auto;
+text-align: start;
+padding-left: 0.5rem;
+    color: #333;
+    height: 50px;
+    line-height: 1.1; /* 调整产品标题的行距 */
+    padding-top: 20px;
+
+
+
+}
+.product h3::after {
+    content: ''; /* 必须设置内容 */
+    position: absolute; /* 绝对定位 */
+    top: 0; /* 位于 h3 的顶 */
+    left: 5%; /* 距离左侧 10% */
+    width: 90%; /* 装饰线宽度为 80% */
+    height: 2px; /* 装饰线高度 */
+    background-color: #373737; /* 装饰线颜色 */
+}
+/* 产品描述 */
+.product p {
+
+text-align: start;
+padding-top: 1.8rem;
+height: 200px;
+padding-left: 0.5rem;
+    font-size: clamp(12px, 1.6vw, 16px);
+    font-weight: 500;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 20px;
+
+}
+
+
+
+
+
+/* 去除默认蓝色样式 */
+.product-action a {
+    color: inherit; /* 继承父元素的颜色 */
+    text-decoration: none; /* 去掉下划线 */
+    font-weight: bold; /* 可选：设置字体加粗 */
+}
+
+
+
+
+.product .product-action {
+    display: inline-block;
+
+    cursor: pointer;
+    padding: clamp(10px, 0vw, 15px) clamp(20px, 10vw, 45px);
+    font-size: clamp(16px, 1.6vw, 20px);
+
+    font-weight: bold;
+    line-height: 1.1;
+    color: #333;
+    background-color: #f5f5f5;
+    border-radius: 24px;
+    transition: all 0.3s ease;
+    border: 1px solid;
+border-color: #000;
+height: 40px;
+
+
+}
+
+/* 按钮悬停效果 */
+.product .product-action:hover {
+    background-color: #3a3a3a;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border: 1px solid;
+
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.title {
+    line-height: 1.4;
+    position: absolute;
+    text-align: left;
+
+top: clamp(30px,2vw,60px);
+left: clamp(0px,5vw,20vw);
+
+
+
+  }
+  .title .en {
+    color: #2d2d2d;
+    font-size: clamp(24px,5vw,36px);
+    letter-spacing: 1px;
+    font-weight: 700;
+    
+    left: 0px;
+  }
+  .title .cn {
+    color: #2d2d2d;
+    display: block; /* 独占一行 */
+    margin: 3px 0 0 0; /* 仅上方有3px间距 */
+    font-weight: 600; /* 半粗 */
+    padding-top: 10px;
+    width: 100%; /* 设置标题的宽度 */
+    font-size: clamp(20px,2vw,24px);
+
+  }
+
+
+
+.more-btn {
+    position: absolute;
+    top: calc(clamp(160px, 10vw, 200px) * 0.4); /* 动态匹配顶部padding */
+    right: calc(clamp(0px, 5vw, 80px) + 2%); /* 动态匹配左右padding */
+    text-decoration: none;
+    color: #333;
+    font-size: clamp(14px, 1.2vw, 18px);
+    font-weight: 600;
+    padding: 0.6em 1.2em;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 0.25em;
+    background: rgba(255,255,255,0.92);
+    box-shadow: 0 3px 9px rgba(0,0,0,0.08);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.more-btn:hover {
+    background: #2d2d2d;
+    color: #fff;
+    border-color: transparent;
+    transform:     
+   
+    translateX(15%)   
+
+    scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+
+
+
+
+
+.product div2 {
+    width: clamp(260px, 30vw, 380px); /* 更合理的范围 */
+    height: 600px;
+    text-align: center;
+    background: rgb(255, 255, 255);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer; /* 鼠标悬停时变为手型 */
+    display: grid;
+
+    
+}
+.product div2 img{
+    width: 100%;
+    transition: transform 0.3s ease; /* 添加平滑过渡效果 */
+
+
+}
+
+div2:hover img {
+    transform: scale(1.1); /* 悬停时放大 */
+}
+
+@media (max-width: 768px) {
+    .product div2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+        gap: 10px; /* 减小间距 */
+        height: 400px;
+    }
+
+
+}
+
+
+/* 底部关于区域容器 - 响应式优化 */
+.about {
+    display: flex;
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: space-around; /* 更均衡的空间分布 */
+    align-items: flex-start; /* 顶部对齐 */
+    color: #2e2e2e;
+    padding: clamp(30px, 5vw, 50px); /* 响应式内边距 */
+    background-color: #e1e1e1;
+    width: 100%;
+    margin: 0 auto;
+    line-height: 1.5;
+    gap: 30px; /* 增加子元素间距 */
+    box-sizing: border-box; /* 包含padding计算 */
+}
+
+/* 内容区块 - 响应式宽度 */
+.about  div {
+    flex: 1; /* 自动分配空间 */
+    min-width: 250px; /* 最小宽度防止挤压 */
+    max-width: 300px; /* 最大宽度控制行长 */
+    padding: 0 15px;
+}
+
+/* 标题样式 */
+.about h3 {
+    color: #060606;
+    padding-bottom: 12px;
+    
+    margin: 0 0 10px 0; /* 仅下边距 */
+    font-weight: 700;
+    font-size: clamp(18px, 2vw, 22px); /* 响应式字体 */
+    border-bottom: 2px solid #d63434; /* 添加装饰线 */
+    text-align: left;
+}
+
+/* 文本内容 */
+.about p {
+    color: #767676;
+    text-align: left;
+    padding: 8px 0;
+    margin: 0;
+    font-weight: 600; /* 适当降低字重 */
+    font-size: clamp(15px, 1.8vw, 17px); /* 响应式字体 */
+    line-height: 1.6;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    padding-left: 15px; /* 为装饰元素留空间 */
+}
+
+
+/* 悬停效果增强 */
+.about p:hover {
+    color: #d63434;
+    transform: translateX(5px); /* 右移效果 */
+}
+
+/* 添加列表装饰元素 */
+.about p::before {
+    content: "•";
+    color: #d63434;
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+.about p:hover::before {
+    transform: scale(1.3); /* 悬停时放大装饰点 */
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .about {
+        gap: 20px;
+        padding: 30px 20px;
+    }
+    
+    .about  div {
+        min-width: 100%; /* 小屏幕占满宽度 */
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .about p {
+        padding-left: 20px; /* 增大装饰点间距 */
+    }
+}
+
+
+
+
+
+
+/* 弹窗样式 */
+.modal {
+    display: none; /* 隐藏复选框 */
+
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    position: fixed; /* 固定定位，确保相对于视口 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 占满视口宽度 */
+    height: 100%; /* 占满视口高度 */
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+    z-index: 9999; /* 确保在最上层 */
+    transition: all 0.3s ease;  /* 添加过渡动画 */
+}
+
+.modal-content {
+width: 100%;
+padding: 20px;
+background-color: white;
+
+}
+.modal-content p{
+    color: inherit; /* 继承父元素的颜色 */
+}
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    padding-right: 20px;
+
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+/* 覆盖默认样式 */
+#contact-link, 
+#contact-link2, 
+#contact-link3, 
+#contact-link4 {
+    color: inherit; /* 继承父元素的颜色 */
+    text-decoration: none; /* 去掉下划线 */
+    cursor: pointer; /* 鼠标变成手型 */
+}
+
+#contact-link:hover, 
+#contact-link2:hover, 
+#contact-link3:hover, 
+#contact-link4:hover {
+
+    text-decoration: underline; /* 鼠标悬停时显示下划线 */
+}
+
+.clickable {
+    cursor: pointer; /* 鼠标悬停时显示手型指针 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.newsletter {
+    /* 订阅 */
+    
+    background-color: #737373;/* 背景颜色 */
+
+    color: white;
+    padding: 10px 0px 10px;  /* 上 左右 下 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'DM Sans', sans-serif;  /* 建议添加字体继承 */
+}
+
+.newsletter p {
+    /* 提示文字样式 */
+    margin: 0 0 20px 0;  /* 标准化写法：上 右 下 左 */
+    font-size: 1.125rem;  /* 18px，使用rem单位 */
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+.newsletter input, 
+.newsletter button {
+    /* 输入框和按钮共用样式 */
+    background-color: transparent;
+    color: white;
+    border: 1px solid #949d9a;
+    padding: 12px 16px;  /* 优化内边距：12px上下，16px左右 */
+    border-radius: 5px;
+    font-size: 0.875rem;  /* 14px，使用rem单位 */
+    font-family: inherit;  /* 继承父元素字体 */
+    transition: all 0.3s ease;  /* 添加过渡动画 */
+}
+
+.newsletter input {
+    /* 输入框专属样式 */
+    width: 220px;  /* 稍微加宽 */
+    margin-right: 15px;
+    caret-color: #E0E9A3;  /* 光标颜色 */
+}
+
+.newsletter button {
+    /* 按钮专属样式 */
+    width: 120px;  /* 适当加宽 */
+    cursor: pointer;
+    font-weight: 500;  /* 中等字重 */
+    letter-spacing: 0.5px;  /* 字间距微调 */
+    background-color: rgba(255, 255, 255, 0.1);  /* 半透明背景 */
+}
+
+/* 交互状态 */
+.newsletter button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);  /* 轻微上浮效果 */
+}
+
+.newsletter button:active {
+    transform: translateY(0);
+}
+
+input::placeholder {
+    /* 占位符样式 */
+    color: #DDDDDD;
+    opacity: 1;  /* 确保颜色完全显示 */
+    font-size: 0.875rem;  /* 与输入文字一致 */
+}
+
+input:focus {
+    /* 聚焦状态 */
+    outline: none;
+    border-color: #E0E9A3;
+    box-shadow: 0 0 0 2px rgba(224, 233, 163, 0.2);  /* 添加发光效果 */
+}
+
+
+@media (max-width: 768px) {
+
+
+
+    .newsletter input {
+        /* 输入框专属样式 */
+        width: 160px;  /* 稍微加宽 */
+        margin-right: 15px;
+        caret-color: #E0E9A3;  /* 光标颜色 */
+    }
+
+    .newsletter button {
+        width: 80px;  /* 稍微加宽 */
+    }
+    
+}
+
+
+
+
+
+
+/* 来自 Uiverse.io 作者 vinodjangid07 */
+/* 消息框样式 */
+.messageBox {
+    width: fit-content; /* 根据内容自动调整宽度 */
+    height: 40px; /* 固定高度 */
+    display: flex; /* 使用 Flex 布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    background-color: #2d2d2d; /* 背景颜色 */
+    padding: 0 15px; /* 左右内边距 */
+    border-radius: 10px; /* 圆角边框 */
+    border: 1px solid rgb(63, 63, 63); /* 边框颜色 */
+margin-left: 45%;
+}
+
+/* 当消息框内有焦点时的样式 */
+.messageBox:focus-within {
+    border: 1px solid rgb(110, 110, 110); /* 改变边框颜色 */
+}
+
+/* 文件上传容器样式 */
+.fileUploadWrapper {
+    width: fit-content; /* 根据内容自动调整宽度 */
+    height: 100%; /* 高度占满父容器 */
+    display: flex; /* 使用 Flex 布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    font-family: Arial, Helvetica, sans-serif; /* 字体样式 */
+}
+
+/* 隐藏文件上传的默认输入框 */
+#file {
+    display: none;
+}
+
+/* 文件上传标签样式 */
+.fileUploadWrapper label {
+    cursor: pointer; /* 鼠标悬停时显示手型指针 */
+    width: fit-content; /* 根据内容自动调整宽度 */
+    height: fit-content; /* 根据内容自动调整高度 */
+    display: flex; /* 使用 Flex 布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    position: relative; /* 相对定位 */
+}
+
+/* 文件上传图标样式 */
+.fileUploadWrapper label svg {
+    height: 18px; /* 图标高度 */
+}
+
+/* 文件上传图标路径样式 */
+.fileUploadWrapper label svg path {
+    transition: all 0.3s; /* 添加过渡动画 */
+}
+
+/* 文件上传图标圆形样式 */
+.fileUploadWrapper label svg circle {
+    transition: all 0.3s; /* 添加过渡动画 */
+}
+
+/* 鼠标悬停时的图标路径样式 */
+.fileUploadWrapper label:hover svg path {
+    stroke: #fff; /* 改变描边颜色为白色 */
+}
+
+/* 鼠标悬停时的图标圆形样式 */
+.fileUploadWrapper label:hover svg circle {
+    stroke: #fff; /* 改变描边颜色为白色 */
+    fill: #3c3c3c; /* 改变填充颜色 */
+}
+
+/* 鼠标悬停时显示提示框 */
+.fileUploadWrapper label:hover .tooltip {
+    display: block; /* 显示提示框 */
+    opacity: 1; /* 设置透明度为 1 */
+}
+
+/* 提示框样式 */
+.tooltip {
+    position: absolute; /* 绝对定位 */
+    top: -40px; /* 向上偏移 40px */
+    display: none; /* 默认隐藏 */
+    opacity: 0; /* 默认透明 */
+    color: white; /* 文本颜色为白色 */
+    font-size: 10px; /* 字体大小 */
+    text-wrap: nowrap; /* 禁止换行 */
+    background-color: #000; /* 背景颜色为黑色 */
+    padding: 6px 10px; /* 内边距 */
+    border: 1px solid #3c3c3c; /* 边框颜色 */
+    border-radius: 5px; /* 圆角边框 */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.596); /* 添加阴影 */
+    transition: all 0.3s; /* 添加过渡动画 */
+}
+
+/* 消息输入框样式 */
+#messageInput {
+    width: 200px; /* 固定宽度 */
+    height: 100%; /* 高度占满父容器 */
+    background-color: transparent; /* 背景透明 */
+    outline: none; /* 去除外边框 */
+    border: none; /* 去除边框 */
+    padding-left: 10px; /* 左侧内边距 */
+    color: white; /* 文本颜色为白色 */
+}
+
+/* 当输入框聚焦或内容有效时，改变发送按钮图标的样式 */
+#messageInput:focus ~ #sendButton svg path,
+#messageInput:valid ~ #sendButton svg path {
+    fill: #3c3c3c; /* 填充颜色 */
+    stroke: white; /* 描边颜色 */
+}
+
+/* 发送按钮样式 */
+#sendButton {
+    width: fit-content; /* 根据内容自动调整宽度 */
+    height: 100%; /* 高度占满父容器 */
+    background-color: transparent; /* 背景透明 */
+    outline: none; /* 去除外边框 */
+    border: none; /* 去除边框 */
+    display: flex; /* 使用 Flex 布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    cursor: pointer; /* 鼠标悬停时显示手型指针 */
+    transition: all 0.3s; /* 添加过渡动画 */
+}
+
+/* 发送按钮图标样式 */
+#sendButton svg {
+    height: 18px; /* 图标高度 */
+    transition: all 0.3s; /* 添加过渡动画 */
+}
+
+/* 发送按钮图标路径样式 */
+#sendButton svg path {
+    transition: all 0.3s; /* 添加过渡动画 */
+}
+
+/* 鼠标悬停时的发送按钮图标样式 */
+#sendButton:hover svg path {
+    fill: #3c3c3c; /* 填充颜色 */
+    stroke: white; /* 描边颜色 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 关注我们文本样式 */
+.follow-text {
+    display: inline-block; /* 改为行内块元素 */
+    font-size: 22px;
+    font-weight: 700;
+    color: #f1f1f1;
+    white-space: nowrap;
+    margin-right: 20px; /* 与按钮的间距 */
+    margin-bottom: 40px;
+    vertical-align: middle; /* 垂直居中 */
+
+    position: relative; /* 相对定位 */
+    z-index: 1; /* 确保在最上层 */
+
+
+}
+
+.wrapper {
+    display: inline-block; /* 改为行内块元素 */
+    margin-top: 20px;
+    margin-bottom: 60px;
+    vertical-align: middle; /* 垂直居中 */
+    margin-right: 120px;
+}
+
+/* 其他样式保持不变 */
+.wrapper .but {
+    display: inline-flex;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    margin: 0 5px; /* 调整外边距 */
+    overflow: hidden;
+    background: #fff;
+    border-radius: 30px;
+    transition: width 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+/* ... 其余原有样式 ... */
+
+.wrapper .but .icon {
+    flex: 0 0 50px; /* 固定宽度 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(1.4);
+    transition: transform 0.3s ease;
+}
+
+.wrapper .but span {
+    /* 文本样式 */
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px; /* 字间距微调 */
+    color: #333;
+    
+    /* 布局控制 */
+    padding-left: 5px; /* 与图标的间距 */
+    font-weight: 700;
+    white-space: nowrap; /* 禁止换行 */
+    
+    /* 动画效果 */
+    opacity: 0; /* 初始隐藏 */
+    transform: translateX(-10px);
+    transition: 
+        opacity 0.3s ease 0.1s,
+        transform 0.3s ease,
+        font-size 0.2s ease;
+}
+
+/* 原有悬停效果保持不变 */
+.wrapper .but:hover span {
+    opacity: 1;
+    transform: none;
+    font-size: 16px;
+}
+.wrapper .but:hover {
+    width: 200px;
+}
+.wrapper .but:hover .icon {
+    transform: scale(1.5);
+}
+
+/* 新增：悬停时显示二维码 */
+.wrapper .but:hover + .code {
+    display: block;
+    opacity: 1;
+
+}
+
+
+/* 微信二维码弹窗样式 */
+/* 二维码基础样式 */
+.wrapper .code {
+    display: none;
+    position: absolute;
+    width: 180px; /* 推荐固定宽度 */
+    height: auto;
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+    
+    /* 关键定位设置 */
+    bottom: 100%;      /* 定位到父元素顶部 */
+    left: 77%;         /* 水平居中 */
+    transform: translateX(-50%); /* 精确居中 */
+    margin-bottom: 10px; /* 与按钮的间距 */
+}
+
+/* 悬停时显示 */
+.wrapper .but:hover + .code {
+    display: block;
+    opacity: 1;
+}
+
+/* 确保父容器可定位 */
+.wrapper {
+    position: relative; /* 新增：为二维码定位提供基准 */
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    vertical-align: middle;
+}
+
+
+/* 统一设置所有SVG图标颜色 */
+.wrapper .but img[src$=".svg"] {
+    
+    filter: brightness(0) saturate(100%) invert(50%) sepia(100%) hue-rotate(180deg) !important; /* 修改为蓝色 */
+    transition: filter 0.3s ease;
+}
+
+
+/* 悬停时变色 */
+.wrapper .but:hover img[src$=".svg"] {
+    filter: brightness(1) sepia(1) hue-rotate(200deg) saturate(105%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .wrapper {
+
+        margin-right: 0px;
+        margin-bottom: 40px;
+        margin-top: 20px;
+    }
+    .wrapper .but {
+        width: 40px; /* 在小屏幕上缩小按钮宽度 */
+        height: 40px; /* 缩小按钮高度 */
+        border-radius: 40px; /* 圆角效果 */
+    }
+
+    .wrapper .but .icon {
+        font-size: 15px; /* 缩小图标大小 */
+        margin-left: -5px;
+        
+
+    }
+    .follow-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* 水平居中 */
+        justify-content: center; /* 垂直居中（如果需要） */
+        text-align: center; /* 文本居中 */
+        max-width: 600px;
+ 
+        margin-top: 30px;
+        margin-bottom: 0px;
+
+        z-index: 1; /* 确保在最上层 */
+
+    }
+    .wrapper .but:hover {
+        width: 190px; /* 悬停时扩展宽度 */
+    }
+
+    .wrapper .but span {
+        font-size: 12px; /* 缩小文字大小 */
+    }
+
+}
+
+
+
+
+
+
+footer {
+    background-color: #727272;
+    color: #fff;
+
+    text-align: center;
+    border-top: 1px solid #5d5d5d;
+
+    display: flex;
+    justify-content:center;
+    align-items:flex-end;
+    width: 100%; /* 新增 */
+    height: 10vh;
+    box-sizing: border-box; /* 确保border计算在宽度内 */
+}
+
+
+
+.footer-content p {
+
+    margin: 5;
+    line-height: 1.5;
+    font-size: 14px;
+}
+.footer-content p1 {
+padding-bottom: 0px;
+font-weight: 700;
+margin: 50px;
+    font-size: 14px;
+}
+
+/* .footer-content a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+} */
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .parallel-group {
+        flex-direction: column;
+        gap: 1px;
+        
+    }
+    
+    .footer-content p1 {
+        margin: 0;
+        line-height: 2;
+        font-size: 10px;
+    }
+    
+}
+
+/* 其他样式保持原样 */

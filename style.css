@@ -1,6 +1,9 @@
+@font-face {
+    font-family: 'DM Sans';
+    src: url('https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap');
+    font-display: swap;
+}
 
-@import url('https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
 
 
@@ -10,6 +13,10 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+
+    [class*="product"], .active {
+        will-change: transform, opacity, box-shadow;
+    }   
 /* 给所有元素加红色边框 */
         /* outline: 1px solid red !important;  */
 
@@ -83,7 +90,8 @@ body {
     opacity: 1;
     filter: blur(0);
     transform: translateX(0);
-    transition: 1.25s;
+
+    transition: all 0.45s ease-out;
   }
 
 
@@ -91,6 +99,211 @@ body {
 
 
 
+/* From Uiverse.io by Nawsome */ 
+.pl {
+    width: 6em;
+    height: 50em;
+  }
+  
+  .pl__ring {
+    animation: ringA 2s linear infinite;
+  }
+  
+  .pl__ring--a {
+    stroke: #f42f25;
+  }
+  
+  .pl__ring--b {
+    animation-name: ringB;
+    stroke: #f49725;
+  }
+  
+  .pl__ring--c {
+    animation-name: ringC;
+    stroke: #255ff4;
+  }
+  
+  .pl__ring--d {
+    animation-name: ringD;
+    stroke: #f42582;
+  }
+  
+  /* Animations */
+  @keyframes ringA {
+    from, 4% {
+      stroke-dasharray: 0 660;
+      stroke-width: 20;
+      stroke-dashoffset: -330;
+    }
+  
+    12% {
+      stroke-dasharray: 60 600;
+      stroke-width: 30;
+      stroke-dashoffset: -335;
+    }
+  
+    32% {
+      stroke-dasharray: 60 600;
+      stroke-width: 30;
+      stroke-dashoffset: -595;
+    }
+  
+    40%, 54% {
+      stroke-dasharray: 0 660;
+      stroke-width: 20;
+      stroke-dashoffset: -660;
+    }
+  
+    62% {
+      stroke-dasharray: 60 600;
+      stroke-width: 30;
+      stroke-dashoffset: -665;
+    }
+  
+    82% {
+      stroke-dasharray: 60 600;
+      stroke-width: 30;
+      stroke-dashoffset: -925;
+    }
+  
+    90%, to {
+      stroke-dasharray: 0 660;
+      stroke-width: 20;
+      stroke-dashoffset: -990;
+    }
+  }
+  
+  @keyframes ringB {
+    from, 12% {
+      stroke-dasharray: 0 220;
+      stroke-width: 20;
+      stroke-dashoffset: -110;
+    }
+  
+    20% {
+      stroke-dasharray: 20 200;
+      stroke-width: 30;
+      stroke-dashoffset: -115;
+    }
+  
+    40% {
+      stroke-dasharray: 20 200;
+      stroke-width: 30;
+      stroke-dashoffset: -195;
+    }
+  
+    48%, 62% {
+      stroke-dasharray: 0 220;
+      stroke-width: 20;
+      stroke-dashoffset: -220;
+    }
+  
+    70% {
+      stroke-dasharray: 20 200;
+      stroke-width: 30;
+      stroke-dashoffset: -225;
+    }
+  
+    90% {
+      stroke-dasharray: 20 200;
+      stroke-width: 30;
+      stroke-dashoffset: -305;
+    }
+  
+    98%, to {
+      stroke-dasharray: 0 220;
+      stroke-width: 20;
+      stroke-dashoffset: -330;
+    }
+  }
+  
+  @keyframes ringC {
+    from {
+      stroke-dasharray: 0 440;
+      stroke-width: 20;
+      stroke-dashoffset: 0;
+    }
+  
+    8% {
+      stroke-dasharray: 40 400;
+      stroke-width: 30;
+      stroke-dashoffset: -5;
+    }
+  
+    28% {
+      stroke-dasharray: 40 400;
+      stroke-width: 30;
+      stroke-dashoffset: -175;
+    }
+  
+    36%, 58% {
+      stroke-dasharray: 0 440;
+      stroke-width: 20;
+      stroke-dashoffset: -220;
+    }
+  
+    66% {
+      stroke-dasharray: 40 400;
+      stroke-width: 30;
+      stroke-dashoffset: -225;
+    }
+  
+    86% {
+      stroke-dasharray: 40 400;
+      stroke-width: 30;
+      stroke-dashoffset: -395;
+    }
+  
+    94%, to {
+      stroke-dasharray: 0 440;
+      stroke-width: 20;
+      stroke-dashoffset: -440;
+    }
+  }
+  
+  @keyframes ringD {
+    from, 8% {
+      stroke-dasharray: 0 440;
+      stroke-width: 20;
+      stroke-dashoffset: 0;
+    }
+  
+    16% {
+      stroke-dasharray: 40 400;
+      stroke-width: 30;
+      stroke-dashoffset: -5;
+    }
+  
+    36% {
+      stroke-dasharray: 40 400;
+      stroke-width: 30;
+      stroke-dashoffset: -175;
+    }
+  
+    44%, 50% {
+      stroke-dasharray: 0 440;
+      stroke-width: 20;
+      stroke-dashoffset: -220;
+    }
+  
+    58% {
+      stroke-dasharray: 40 400;
+      stroke-width: 30;
+      stroke-dashoffset: -225;
+    }
+  
+    78% {
+      stroke-dasharray: 40 400;
+      stroke-width: 30;
+      stroke-dashoffset: -395;
+    }
+  
+    86%, to {
+      stroke-dasharray: 0 440;
+      stroke-width: 20;
+      stroke-dashoffset: -440;
+    }
+  }
 
 header {
     background-color: rgba(255, 255, 255, 0.5);
@@ -542,19 +755,12 @@ z-index: 0;
 @keyframes scaleDown {
     0% {
         transform: scale(1.2);
-        overflow: hidden; /* 初始状态隐藏溢出 */
     }
     100% {
         transform: scale(1);
-        overflow: overflow; /* 或保持 hidden */
     }
 }
 
-.background home{
-    width: 100%;
-    max-width: 1400px;
-    height: 66vh;
-}
 
 
 /* 应用动画到首页 .home */
@@ -1044,6 +1250,9 @@ text-align: left;
     cursor:pointer;
     transition: transform 0.3s ease;
 }
+.card {
+    will-change: transform;
+}
 
 /* 卡片图片 */
 .card-image {
@@ -1169,25 +1378,14 @@ bottom: 5px;
 
 /* 动画定义 */
 @keyframes slideFadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(30px);
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-  
-/* 基础动画定义 */
-@keyframes slideFadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes scaleIn {
-  from { transform: scale(0.95); }
-  to { transform: scale(1); }
 }
 
 
@@ -1267,6 +1465,9 @@ bottom: 5px;
 
 
 /* 产品区域容器 */
+.product .product div {
+    will-change: transform;
+}
 .product {
     display: grid; /* 改为grid布局 */
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 最小宽度350自动适配列数 */
@@ -1463,11 +1664,7 @@ left: clamp(0px,5vw,20vw);
     background: #2d2d2d;
     color: #fff;
     border-color: transparent;
-    transform:     
-   
-    translateX(15%)   
-
-    scale(1.05);
+    transform: translateX(15%) scale(1.05);
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
@@ -1499,16 +1696,12 @@ left: clamp(0px,5vw,20vw);
 div2:hover img {
     transform: scale(1.1); /* 悬停时放大 */
 }
-
 @media (max-width: 768px) {
-    .product div2 {
+    .responsive-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
-        gap: 10px; /* 减小间距 */
-        height: 400px;
+        gap: 10px;
     }
-
-
 }
 
 

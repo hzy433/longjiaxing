@@ -1,3 +1,22 @@
+let timeout;
+window.addEventListener('scroll', () => {
+    if (timeout) return;
+    timeout = setTimeout(() => {
+        // 执行滚动逻辑
+        timeout = null;
+    }, 100);
+});
+
+
+
+// // 页面加载完成后隐藏加载动画
+// window.addEventListener('load', () => {
+//     const loadingScreen = document.getElementById('loading-screen');
+//     setTimeout(() => {
+//         loadingScreen.classList.add('hidden'); // 添加隐藏类，触发渐隐动画
+//     }, 2000); // 延迟 2 秒后隐藏加载动画
+// });
+
 // 创建一个 IntersectionObserver 实例，用于观察元素是否进入视口
 const observer = new IntersectionObserver((entries) => {
   // entries 是所有被观察元素的数组

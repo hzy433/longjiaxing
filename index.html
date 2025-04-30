@@ -3,23 +3,51 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <!-- 确保 viewport 设置正确（防止默认缩放）： -->
+         <!-- 确保 viewport 设置正确（防止默认缩放）： -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <title>龙嘉兴电子科技官网</title>
-    <link rel="stylesheet" href="/longjiaxing/style.css">
+
+ 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    
+
+ <!-- 预加载字体 -->
+ <link rel="preload" href="fonts/NotoSansSC-Regular.otf" as="font" type="font/otf" crossorigin>
+ <link href="https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+
+ <!-- 预加载关键 CSS -->
+
+ <link rel="stylesheet" href="style.css">
+
+ <!-- 预加载关键 JS -->
+ <link rel="preload" href="script.js" as="script">
+
+ <!-- 预加载图片 -->
+ <link rel="preload" href="images/banner.png" as="image">
+ <link rel="preload" href="images/cp/F2302A0 100WFLOODLIGHT.png" as="image">
+ <link rel="preload" href="images/cp/F2212A0 7W SOLAR PULSE.png" as="image">
+ <link rel="preload" href="images/cp/F2101A1 PEN LIGHT.png" as="image">
 </head>
 
 
 
 
 <body>
+    <!-- 加载动画 -->
+    <!-- <div id="loading-screen">
+        <div class="run">
+            <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
+                <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
+                <circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"></circle>
+                <circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+                <circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+            </svg>
+        </div>
+    </div> -->
+
+
     <header>
-
-
-        
 
         <h1>龙嘉兴电子科技</h1>
 
@@ -111,10 +139,10 @@
     <p>极致服务，细节方案，每一次都是专业的服务!</p>
     <div id="container">
         <button class="learn-more">
-          <span class="circle">
-          <span class="icon arrow"></span></span>
-          </span>
-          <span class="button-text">了解更多</span>
+            <span class="circle">
+                <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">了解更多</span>
         </button>
     </div>
     </div>
@@ -246,7 +274,7 @@
     
     <section class="background shop" id="shop">
         <div class="shop" id="shop">
-            <img src="images/banner1.png" alt="龙嘉兴电子科技">
+            <img src="images/shop.png" alt="龙嘉兴电子科技">
             <div class="info">
             <h2>我们可以为你解决产品 方案 库存...</h2>
             <p>24h一对一服务,让你获得极致服务,<br>
@@ -410,8 +438,9 @@
 
 
         <div>
-            <h3>帮助中心</h3>
-            <p>购前须知</p>
+            <h3>帮助与支持</h3>
+
+            <p class="clickable" id="contact-link-parent"><a href="#" id="contact-link">问题反馈</a></p>
             <p>购买指南</p>
             <p>技术支持</p>
             <p class="clickable" id="contact-link-parent"><a href="#" id="contact-link">咨询采购专家</a></p>
@@ -544,7 +573,8 @@
             </div>
         </section>
 </main> <!-- main 结束 -->
-        <script src="/longjiaxing/script.js" defer></script>
+        <script src="script.js" defer></script>
+
 </body>
 
 
